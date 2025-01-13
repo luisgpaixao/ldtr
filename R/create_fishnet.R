@@ -13,3 +13,4 @@ create_fishnet <- function(sta, square_size){
 
   return(grid)
 }
+
