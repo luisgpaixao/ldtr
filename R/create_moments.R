@@ -3,10 +3,10 @@
 #' Creates a list of moments for the Landscape Dynamics analysis.
 #' If crs of moments is not the same as the study area, a transformation is applied.
 #'
-#' @param momentspaths a list of ESRI Shapefiles paths representing the Moments for analysis
-#' @param sta an sf Simple feature collection representing the study area for analysis
+#' @param momentspaths a list of ESRI Shapefiles paths representing the Moments for analysis.
+#' @param sta an sf Simple feature collection representing the study area for analysis.
 #'
-#' @return a list of sf Simple feature collections representing the moments for analysis
+#' @return a list of sf Simple feature collections representing the moments for analysis.
 #'
 create_moments <- function(momentspaths, sta){
 

@@ -3,11 +3,11 @@
 #' Creates a list of moments for the Landscape Dynamics analysis, discarding features with area under a threshold.
 #' Area field is updated for all features.
 #'
-#' @param nmoments a list of sf Simple feature collections representing the moments for analysis
-#' @param field a character indicating the area field to be updated
-#' @param patch_value an integer value representing minimum area threshold of features, in square meters
+#' @param nmoments a list of sf Simple feature collections representing the moments for analysis.
+#' @param field a character indicating the area field to be updated.
+#' @param patch_value an integer value representing minimum area threshold of features, in square meters.
 #'
-#' @return a list of sf Simple feature collections representing the moments for analysis, filtered by area threshold
+#' @return a list of sf Simple feature collections representing the moments for analysis, filtered by area threshold.
 #'
 create_selectpatch <- function(nmoments, field, patch_value){
 

@@ -7,12 +7,12 @@
 create_moments(momentspaths, sta)
 }
 \arguments{
-\item{momentspaths}{a list of ESRI Shapefiles paths representing the Moments for analysis}
+\item{momentspaths}{a list of ESRI Shapefiles paths representing the Moments for analysis.}
 
-\item{sta}{an sf Simple feature collection representing the study area for analysis}
+\item{sta}{an sf Simple feature collection representing the study area for analysis.}
 }
 \value{
-a list of sf Simple feature collections representing the moments for analysis
+a list of sf Simple feature collections representing the moments for analysis.
 }
 \description{
 Creates a list of moments for the Landscape Dynamics analysis.

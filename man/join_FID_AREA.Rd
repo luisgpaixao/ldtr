@@ -7,13 +7,13 @@
 join_FID_AREA(in_layer, in_df, area_field, count_field)
 }
 \arguments{
-\item{in_layer}{an sf Simple features collection representing the study area for analysis}
+\item{in_layer}{an sf Simple features collection representing the study area for analysis.}
 
 \item{in_df}{a data.frame with the same amount of rows and same order as the study area's sf Simple collection, containing information on FID, sum of areas and frequency of patches.}
 
-\item{area_field}{a character indicating the name of the field representing the sum of areas of patches in a moment of analysis}
+\item{area_field}{a character indicating the name of the field representing the sum of areas of patches in a moment of analysis.}
 
-\item{count_field}{a character indicating the name of the field representing the count of patches in a moment of analysis}
+\item{count_field}{a character indicating the name of the field representing the count of patches in a moment of analysis.}
 }
 \value{
 an sf Simple features collection representing the study area for analysis, updated with area and frequency for a moment of analysis.

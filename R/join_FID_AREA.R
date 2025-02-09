@@ -2,10 +2,10 @@
 #'
 #' Given a moment of analysis clipped by the study area's features, creates a data frame with FID and respective values for total area and frequency of patches.
 #'
-#' @param in_layer an sf Simple features collection representing the study area for analysis
+#' @param in_layer an sf Simple features collection representing the study area for analysis.
 #' @param in_df a data.frame with the same amount of rows and same order as the study area's sf Simple collection, containing information on FID, sum of areas and frequency of patches.
-#' @param area_field a character indicating the name of the field representing the sum of areas of patches in a moment of analysis
-#' @param count_field a character indicating the name of the field representing the count of patches in a moment of analysis
+#' @param area_field a character indicating the name of the field representing the sum of areas of patches in a moment of analysis.
+#' @param count_field a character indicating the name of the field representing the count of patches in a moment of analysis.
 #'
 #' @return an sf Simple features collection representing the study area for analysis, updated with area and frequency for a moment of analysis.
 #'

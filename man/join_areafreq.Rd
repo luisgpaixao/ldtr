@@ -7,9 +7,9 @@
 join_areafreq(nmoments, sta)
 }
 \arguments{
-\item{nmoments}{a list of sf Simple feature collections representing the moments for analysis}
+\item{nmoments}{a list of sf Simple feature collections representing the moments for analysis.}
 
-\item{sta}{an sf Simple features collection representing the study area for analysis}
+\item{sta}{an sf Simple features collection representing the study area for analysis.}
 }
 \value{
 an sf Simple features collection representing the study area for analysis, updated with area and frequency values of the different moments of analysis.

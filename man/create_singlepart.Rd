@@ -7,12 +7,12 @@
 create_singlepart(nmoments, field)
 }
 \arguments{
-\item{nmoments}{a list of sf Simple feature collections representing the moments for analysis}
+\item{nmoments}{a list of sf Simple feature collections representing the moments for analysis.}
 
-\item{field}{a character indicating the area field to be updated}
+\item{field}{a character indicating the area field to be updated.}
 }
 \value{
-a list of sf Simple feature collections representing the moments for analysis, updated to singlepart
+a list of sf Simple feature collections representing the moments for analysis, updated to singlepart.
 }
 \description{
 Creates a list of moments for the Landscape Dynamics analysis, updating polygons to singlepart features.

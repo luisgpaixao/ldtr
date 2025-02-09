@@ -7,14 +7,14 @@
 create_intersect(nmoments, sta, field)
 }
 \arguments{
-\item{nmoments}{a list of sf Simple feature collections representing the moments for analysis}
+\item{nmoments}{a list of sf Simple feature collections representing the moments for analysis.}
 
-\item{sta}{an sf Simple feature collection representing the study area for analysis}
+\item{sta}{an sf Simple feature collection representing the study area for analysis.}
 
-\item{field}{a character indicating the area field to be updated}
+\item{field}{a character indicating the area field to be updated.}
 }
 \value{
-a list of sf Simple feature collections representing the moments for analysis, clipped by study area
+a list of sf Simple feature collections representing the moments for analysis, clipped by study area.
 }
 \description{
 Creates a list of moments for the Landscape Dynamics analysis, clipped by a study area layer.

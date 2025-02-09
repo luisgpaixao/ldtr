@@ -7,12 +7,12 @@
 create_fishnet(sta, square_size)
 }
 \arguments{
-\item{sta}{an sf Simple feature collection representing the study area for analysis}
+\item{sta}{an sf Simple feature collection representing the study area for analysis.}
 
-\item{square_size}{an integer value representing square side dimension, in meters}
+\item{square_size}{an integer value representing square side dimension, in meters.}
 }
 \value{
-an sf Simple feature collection representing a regular square fishnet
+an sf Simple feature collection representing a regular square fishnet.
 }
 \description{
 Creates a fishnet of regular squares over a study area
