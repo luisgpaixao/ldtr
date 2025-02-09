@@ -8,10 +8,10 @@
 #'
 #' @return an sf Simple features collection representing the study area for analysis, updated with area and frequency values of the different moments of analysis.
 #'
-join_areafreq = function(nmoments, sta){
+join_areafreq <- function(nmoments, sta){
 
   for(i in 1:length(nmoments)){
-    statsSum = stats_by_AreaFID(nmoments[[i]])
+    statsSum = stats_by_FID(nmoments[[i]])
     sta = join_FID_AREA(sta, statsSum, paste0(AREA_FIELD_BASE, i), paste0(FREQ_FIELD_BASE, i))
     cat("Join fields", i, "Done")
   }
