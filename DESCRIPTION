@@ -6,7 +6,7 @@ Authors@R: c(person(given = "Luís",
   family = "Paixão",
   role = c("aut", "cre"),
   email = "luispaixao@agroinsider.com",
-  comment = c(ORCID = "0000-0002-3070-9577"))
+  comment = c(ORCID = "0000-0002-3070-9577")))
 Description: What the package does (one paragraph).
 License: GPL (>= 3)
 Encoding: UTF-8

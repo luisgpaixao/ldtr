@@ -8,17 +8,17 @@
 #' @export
 stats_by_FID <- function(in_layer){
 
-  set_fid = unique(in_layer[[FID_FIELD]])
+  set_fid = unique(in_layer[[constants$FID_FIELD]])
 
   fid = c()
   sum = c()
   count = c()
 
   for(i in set_fid){
-    sel = in_layer[in_layer[[FID_FIELD]]==i, ]
+    sel = in_layer[in_layer[[constants$FID_FIELD]]==i, ]
     fid = c(fid, i)
     count = c(count, nrow(sel))
-    sum = c(sum, sum(sel[[AREAINICIAL_FIELD]]))
+    sum = c(sum, sum(sel[[constants$AREAINICIAL_FIELD]]))
   }
 
   return(data.frame(fid = fid, sum = sum, count = count))

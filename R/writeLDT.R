@@ -44,15 +44,15 @@ writeLDT <- function(objLDT){
   }
 
   # intersect
-  intersct = create_intersect(mmt, sta, AREAINICIAL_FIELD)
+  intersct = create_intersect(mmt, sta, constants$AREAINICIAL_FIELD)
 
   # multipart to singlepart
-  mmt_single = create_singlepart(intersct, AREAINICIAL_FIELD)
+  mmt_single = create_singlepart(intersct, constants$AREAINICIAL_FIELD)
   rm(intersct)
   gc()
 
   # patch
-  mmt_patch = create_selectpatch(mmt_single, AREAINICIAL_FIELD, objLDT@patches)
+  mmt_patch = create_selectpatch(mmt_single, constants$AREAINICIAL_FIELD, objLDT@patches)
   rm(mmt_single)
   gc()
 
@@ -71,14 +71,14 @@ writeLDT <- function(objLDT){
     gc()
     if(objLDT@analysis_squares){
       aux_sta = sta[seq_area[seqs]:(seq_area[seqs+1]-1),]
-      aux_mmt_patch = subset_by_fid(mmt_patch, FID_FIELD, (seq_area[seqs]:(seq_area[seqs+1]-1)))
+      aux_mmt_patch = subset_by_fid(mmt_patch, constants$FID_FIELD, (seq_area[seqs]:(seq_area[seqs+1]-1)))
     }else{
       aux_sta = sta[seq_area[seqs],]
-      aux_mmt_patch = subset_by_fid(mmt_patch, FID_FIELD, (seq_area[seqs]))
+      aux_mmt_patch = subset_by_fid(mmt_patch, constants$FID_FIELD, (seq_area[seqs]))
     }
 
     # Symmetrical Difference and perforation
-    mmt_symdif_perf = create_symdif(aux_mmt_patch, AREAINICIAL_FIELD, objLDT@perforation)
+    mmt_symdif_perf = create_symdif(aux_mmt_patch, constants$AREAINICIAL_FIELD, objLDT@perforation)
     aux_sta = update_sta_symm(aux_sta, mmt_symdif_perf$symdif)
 
     if(objLDT@perforation){

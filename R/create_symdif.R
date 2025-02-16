@@ -15,7 +15,7 @@ create_symdif <- function(nmoments, area_field, perforation){
   moments = list(symdif = list(), perf = list())
   for(i in 1:length(pairs)){
     sufix = paste0(pairs[[i]][1], pairs[[i]][2])
-    mmtname = paste0(SYM_FIELD_BASE, sufix)
+    mmtname = paste0(constants$SYM_FIELD_BASE, sufix)
     moments$symdif[[mmtname]] = symmetrical_difference(nmoments[[pairs[[i]][1]]], nmoments[[pairs[[i]][2]]])
     cat("Symmetrical Difference", sufix, "Done")
     moments$symdif[[mmtname]] = multi_to_single(moments$symdif[[mmtname]])
@@ -25,7 +25,7 @@ create_symdif <- function(nmoments, area_field, perforation){
 
     if(perforation){
       cat("Perforation", sufix, "check")
-      perfname = paste0(PERF_FIELD_BASE, sufix)
+      perfname = paste0(constants$PERF_FIELD_BASE, sufix)
       moments$perf[[perfname]] = select_perf(moments$symdif[[mmtname]], nmoments[[pairs[[i]][1]]])
     }
 

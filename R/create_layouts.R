@@ -26,7 +26,7 @@ create_layouts <- function(nmoments, in_layer_path){
 
   for(i in 1:length(pairs)){
 
-    tod_field = paste0(TOD_FIELD_BASE, pairs[[i]][1], pairs[[i]][2])
+    tod_field = paste0(constants$TOD_FIELD_BASE, pairs[[i]][1], pairs[[i]][2])
     out_png = gsub(".shp", paste0("_", tod_field, ".png"), in_layer_path)
 
     aux_shp = in_shp
