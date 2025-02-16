@@ -36,7 +36,7 @@ writeLDT <- function(objLDT){
     sta = st_intersection(fishnet,sta)
     cat("Fishnet Clipped by Study Area")
   }
-  sta[FID_FIELD] = seq(1, nrow(sta), 1)
+  sta[constants$FID_FIELD] = seq(1, nrow(sta), 1)
 
   seq_area = seq(1, nrow(sta), objLDT@gap_area)
   if(seq_area[length(seq_area)]!=nrow(sta)){
