@@ -7,7 +7,7 @@
 #' @param sta an sf Simple feature collection representing the study area for analysis.
 #'
 #' @return a list of sf Simple feature collections representing the moments for analysis.
-#'
+#' @export
 create_moments <- function(momentspaths, sta){
 
   moments = list()

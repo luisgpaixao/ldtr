@@ -13,8 +13,8 @@
 #' @slot output a character value representing the path for the ESRI Shapefile output.
 #'
 #' @return an LDT object.
-#'
-createLDT = function(analysis_squares, nmoments, studyareapath, momentspaths,
+#' @export
+createLDT <- function(analysis_squares, nmoments, studyareapath, momentspaths,
                      patches, squares, perforation, forecast, output) {
 
 

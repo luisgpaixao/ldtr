@@ -6,7 +6,7 @@
 #' @param in_layer2 an sf Simple feature collection.
 #'
 #' @return an sf Simple feature collection.
-#'
+#' @export
 symmetrical_difference <- function(in_layer1, in_layer2){
 
   dif1 = st_difference(in_layer1, st_union(st_combine(in_layer2)))

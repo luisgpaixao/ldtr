@@ -7,7 +7,7 @@
 #' @param sta an sf Simple features collection representing the study area for analysis.
 #'
 #' @return an sf Simple features collection representing the study area for analysis, updated with area and frequency values of the different moments of analysis.
-#'
+#' @export
 join_areafreq <- function(nmoments, sta){
 
   for(i in 1:length(nmoments)){

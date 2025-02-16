@@ -1,12 +1,18 @@
 #' Write LDT output
 #'
-#' Preforms the Land Dynamics process and exports an ESRI Shapefile and png maps as outputs.
+#' Preforms the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
 #'
 #' @slot objLDT an object of class LDT.
 #'
 #' @return an sf Simple feature collection, representing the Land Dynamics output.
 #'
-writeLDT = function(objLDT){
+#' @import sf
+#' @import dplyr
+#' @import ggplot2
+#' @import ggspatial
+#'
+#' @export
+writeLDT <- function(objLDT){
 
   if(!dir.exists(objLDT@temp_fold)){
     dir.create(objLDT@temp_fold)

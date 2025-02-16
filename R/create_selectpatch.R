@@ -8,7 +8,7 @@
 #' @param patch_value an integer value representing minimum area threshold of features, in square meters.
 #'
 #' @return a list of sf Simple feature collections representing the moments for analysis, filtered by area threshold.
-#'
+#' @export
 create_selectpatch <- function(nmoments, field, patch_value){
 
   moments = list()

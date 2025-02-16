@@ -8,7 +8,7 @@
 #' @param field a character indicating the area field to be updated.
 #'
 #' @return a list of sf Simple feature collections representing the moments for analysis, clipped by study area.
-#'
+#' @export
 create_intersect <- function(nmoments, sta, field){
 
   moments = list()

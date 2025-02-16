@@ -4,7 +4,7 @@
 #'
 #' @param nmoments an integer value representing the number of moments of analysis.
 #' @param in_layer_path a character value representing the path for the ESRI Shapefile final output.
-#'
+#' @export
 create_layouts <- function(nmoments, in_layer_path){
 
   in_shp = st_read(in_layer_path)

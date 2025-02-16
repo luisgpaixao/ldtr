@@ -6,7 +6,7 @@
 #' @param intersect_layer an sf Simple feature collection, representing the first moment of the pair.
 #'
 #' @return an sf Simple feature collection representing the features where perforation was detected.
-#'
+#' @export
 select_perf <- function(in_layer, intersect_layer){
 
   buff = st_buffer(in_layer, 0.2)

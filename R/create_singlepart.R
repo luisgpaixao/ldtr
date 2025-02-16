@@ -7,7 +7,7 @@
 #' @param field a character indicating the area field to be updated.
 #'
 #' @return a list of sf Simple feature collections representing the moments for analysis, updated to singlepart.
-#'
+#' @export
 create_singlepart <- function(nmoments, field){
 
   moments = list()

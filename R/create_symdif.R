@@ -7,7 +7,7 @@
 #' @param perforation a logical argument indicating if perforation should be considered.
 #'
 #' @return a list of lists containing sf Simple feature collections representing the symmetrical differences and perforations between all moments for analysis.
-#'
+#' @export
 create_symdif <- function(nmoments, area_field, perforation){
 
   pairs = create_pairs(length(nmoments))

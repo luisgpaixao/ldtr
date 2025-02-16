@@ -8,7 +8,7 @@
 #' @param forecast a logical value indicating if forecast should be consider.
 #'
 #' @return an sf Simple feature collection representing the study area for analysis, updated with ToD fields.
-#'
+#' @export
 update_sta_ToD <- function(sta, n_moment, perforation, forecast){
 
   pairs = create_pairs(n_moment)

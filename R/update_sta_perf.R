@@ -6,7 +6,7 @@
 #' @param perf_features a list of sf Simple feature collections representing the perforation between all moments for analysis.
 #'
 #' @return an sf Simple feature collection representing the study area for analysis, updated with perforation fields.
-#'
+#' @export
 update_sta_perf <- function(sta, perf_features){
 
   for(i in 1:length(perf_features)){

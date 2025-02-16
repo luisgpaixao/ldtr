@@ -8,7 +8,7 @@
 #' @param count_field a character indicating the name of the field representing the count of patches in a moment of analysis.
 #'
 #' @return an sf Simple features collection representing the study area for analysis, updated with area and frequency for a moment of analysis.
-#'
+#' @export
 join_FID_AREA <- function(in_layer, in_df, area_field, count_field){
 
   fc = nrow(in_df)

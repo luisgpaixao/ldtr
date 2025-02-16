@@ -5,7 +5,7 @@
 #' @param n_moment an integer value representing the number of moments for analysis.
 #'
 #' @return a list of vectors containing the possible pairs of moments.
-#'
+#' @export
 create_pairs <- function(n_moment){
 
   pairs = list()

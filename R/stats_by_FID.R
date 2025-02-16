@@ -5,7 +5,7 @@
 #' @param in_layer an sf Simple feature collection representing a moment of analysis clipped by study area's features.
 #'
 #' @return a data.frame with the same amount of rows and same order as the study area's sf Simple collection, containing information on FID, sum of areas and frequency of patches.
-#'
+#' @export
 stats_by_FID <- function(in_layer){
 
   set_fid = unique(in_layer[[FID_FIELD]])

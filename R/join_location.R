@@ -7,7 +7,7 @@
 #' @param join_field a character representing the field to be updated in the study area sf Simple feature collection.
 #'
 #' @return an sf Simple feature collection, representing the study area features.
-#'
+#' @export
 join_location <- function(in_layer, join_layer, join_field){
 
   in_layer[in_layer$FID %in% unique(join_layer$FID), join_field] = 1

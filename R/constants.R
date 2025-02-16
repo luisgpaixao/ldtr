@@ -3,6 +3,7 @@
 #' These variables names should not be modified.
 #'
 #' @format A set of predefined constants representing the fields used in the analysis.
+#' @export
 #' @name constants
 {FID_FIELD = "FID"
 AREAINICIAL_FIELD = "Area"

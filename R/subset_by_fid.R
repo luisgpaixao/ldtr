@@ -7,7 +7,7 @@
 #' @param fid_select a vector of integers, representing the FID values to subset.
 #'
 #' @return a list of sf Simple feature collections representing the moments for analysis, subset by FID.
-#'
+#' @export
 subset_by_fid <- function(nmoments, fid_field, fid_select){
 
   for(i in 1:length(nmoments)){

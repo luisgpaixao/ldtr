@@ -6,7 +6,7 @@
 #' @param symdif_perf a list of sf Simple feature collections representing the symmetrical differences between all moments for analysis.
 #'
 #' @return an sf Simple feature collection representing the study area for analysis, updated with symmetrical difference fields.
-#'
+#' @export
 update_sta_symm <- function(sta, symdif_perf){
 
   for(i in 1:length(symdif_perf)){

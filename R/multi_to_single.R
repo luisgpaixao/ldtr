@@ -5,7 +5,7 @@
 #' @param in_layer an sf Simple feature collection.
 #'
 #' @return an sf Simple feature collection.
-#'
+#' @export
 multi_to_single <- function(in_layer){
 
   single = in_layer %>% filter("POLYGON" == st_geometry_type(geometry))
