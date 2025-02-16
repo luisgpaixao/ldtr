@@ -23,7 +23,7 @@ writeLDT <- function(objLDT){
 
   sta = sta[,"geometry"]
   if((is.null(st_crs(sta)$units)) || (st_crs(sta)$units != "m")){
-    stop("CRS units of study area's Shapefile are not in meters, please check your data.", call. = T)
+    stop("CRS units of study area's Shapefile are not in meters, please check your data.\n", call. = T)
   }
 
   # moments
@@ -32,9 +32,9 @@ writeLDT <- function(objLDT){
   # squares or districts
   if(objLDT@analysis_squares){
     fishnet = create_fishnet(sta, objLDT@squares)
-    cat("Fishnet Created")
+    cat("Fishnet Created\n")
     sta = st_intersection(fishnet,sta)
-    cat("Fishnet Clipped by Study Area")
+    cat("Fishnet Clipped by Study Area\n")
   }
   sta[constants$FID_FIELD] = seq(1, nrow(sta), 1)
 
@@ -85,7 +85,7 @@ writeLDT <- function(objLDT){
       aux_sta = update_sta_perf(aux_sta, mmt_symdif_perf$perf)
     }
 
-    cat("Finishing the process, please wait...")
+    cat("Finishing the process, please wait...\n")
 
     # final analysis fields
     aux_sta = update_sta_ToD(aux_sta, objLDT@nmoments, objLDT@perforation, objLDT@forecast)

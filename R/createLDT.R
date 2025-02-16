@@ -26,11 +26,11 @@ createLDT <- function(analysis_squares, nmoments, studyareapath, momentspaths,
   }
 
   if(nmoments < 2 || length(momentspaths) < 2){
-    stop("Number of moments is less than 2. Please check Ldt object variables.", call. = T)
+    stop("Number of moments is less than 2. Please check Ldt object variables.\n", call. = T)
   }
 
   if(nmoments != length(momentspaths)){
-    stop("Number of moments is different than number of shapefile paths. Please check Ldt object variables.", call. = T)
+    stop("Number of moments is different than number of shapefile paths. Please check Ldt object variables.\n", call. = T)
   }
 
   if(analysis_squares){

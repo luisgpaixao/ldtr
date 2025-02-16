@@ -16,7 +16,7 @@ create_singlepart <- function(nmoments, field){
     moments[[mmtname]] = multi_to_single(nmoments[[i]])
     moments[[mmtname]] = update_area(moments[[mmtname]], field)
     moments[[mmtname]] = moments[[mmtname]][!is.na(moments[[mmtname]]$FID),]
-    cat("Multi to SinglePart", i, "Done")
+    cat("Multi to SinglePart", i, "Done\n")
   }
 
   return(moments)

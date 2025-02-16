@@ -17,10 +17,10 @@ create_symdif <- function(nmoments, area_field, perforation){
     sufix = paste0(pairs[[i]][1], pairs[[i]][2])
     mmtname = paste0(constants$SYM_FIELD_BASE, sufix)
     moments$symdif[[mmtname]] = symmetrical_difference(nmoments[[pairs[[i]][1]]], nmoments[[pairs[[i]][2]]])
-    cat("Symmetrical Difference", sufix, "Done")
+    cat("Symmetrical Difference", sufix, "Done\n")
     moments$symdif[[mmtname]] = multi_to_single(moments$symdif[[mmtname]])
     moments$symdif[[mmtname]] = update_area(moments$symdif[[mmtname]], area_field)
-    cat("Multi to SinglePart", sufix, "Done")
+    cat("Multi to SinglePart", sufix, "Done\n")
     try({moments$symdif[[mmtname]][[mmtname]] = 1}, silent = T)
 
     if(perforation){

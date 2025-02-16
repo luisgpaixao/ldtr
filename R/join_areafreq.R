@@ -13,7 +13,7 @@ join_areafreq <- function(nmoments, sta){
   for(i in 1:length(nmoments)){
     statsSum = stats_by_FID(nmoments[[i]])
     sta = join_FID_AREA(sta, statsSum, paste0(constants$AREA_FIELD_BASE, i), paste0(constants$FREQ_FIELD_BASE, i))
-    cat("Join fields", i, "Done")
+    cat("Join fields", i, "Done\n")
   }
 
   return(sta)

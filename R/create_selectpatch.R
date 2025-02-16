@@ -17,7 +17,7 @@ create_selectpatch <- function(nmoments, field, patch_value){
     moments[[mmtname]] = nmoments[[i]][nmoments[[i]][[field]] >= patch_value, ]
     moments[[mmtname]] = update_area(moments[[mmtname]], field)
     moments[[mmtname]] = moments[[mmtname]][!is.na(moments[[mmtname]]$FID),]
-    cat("Patch", i, "Done")
+    cat("Patch", i, "Done\n")
   }
 
   return(moments)
