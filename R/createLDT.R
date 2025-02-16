@@ -7,7 +7,7 @@
 #' @slot studyareapath a character value representing the path for the ESRI Shapefile that defines the study area.
 #' @slot momentspaths a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.
 #' @slot patches an integer value representing minimum area threshold of features, in square meters.
-#' @slot squares an integer value representing square side dimension, in meters. Only used if type of analysis e set to squares.
+#' @slot squares an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.
 #' @slot perforation a logical value representing if perforation is to be consider.
 #' @slot forecast a logical value representing if forecast is to be consider.
 #' @slot output a character value representing the path for the ESRI Shapefile output.

@@ -35,7 +35,7 @@ Constructor for LDT objects.
 
 \item{\code{patches}}{an integer value representing minimum area threshold of features, in square meters.}
 
-\item{\code{squares}}{an integer value representing square side dimension, in meters. Only used if type of analysis e set to squares.}
+\item{\code{squares}}{an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.}
 
 \item{\code{perforation}}{a logical value representing if perforation is to be consider.}
 
