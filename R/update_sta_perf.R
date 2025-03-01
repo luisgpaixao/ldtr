@@ -11,8 +11,8 @@ update_sta_perf <- function(sta, perf_features){
 
   for(i in 1:length(perf_features)){
 
-    if(nrow(perf_features[[1]]) == 0){
-      sta[[names(perf_features[1])]] = 0
+    if(nrow(perf_features[[i]]) == 0){
+      sta[[names(perf_features[i])]] = 0
     }else{
       sta = join_location(sta, perf_features[[i]], names(perf_features[i]))
     }
