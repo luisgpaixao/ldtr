@@ -40,7 +40,7 @@ writeLDT <- function(objLDT){
     sta = st_intersection(fishnet, st_union(sta, by_feature = F))
     cat("Fishnet Clipped by Study Area\n")
   }
-  
+
   sta[constants$FID_FIELD] = seq(1, nrow(sta), 1)
 
   seq_area = seq(1, nrow(sta), objLDT@gap_area)
@@ -75,7 +75,7 @@ writeLDT <- function(objLDT){
     rm(aux_sta, aux_mmt_patch, mmt_symdif_perf)
     gc()
     if(objLDT@analysis_squares){
-      aux_sta = sta[seq_area[seqs]:(seq_area[seqs+1]-1),]
+      aux_sta = sta[seq_area[seqs]:(seq_area[seqs+1]),]
       aux_mmt_patch = subset_by_fid(mmt_patch, constants$FID_FIELD, (seq_area[seqs]:(seq_area[seqs+1]-1)))
     }else{
       aux_sta = sta[seq_area[seqs],]

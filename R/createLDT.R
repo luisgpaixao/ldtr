@@ -22,7 +22,7 @@ createLDT <- function(analysis_squares, nmoments, studyareapath, momentspaths,
   if((squares/1000) * (squares/1000) > default_clusterarea){
     gap_area = 1
   }else{
-    gap_area = default_clusterarea / ((squares/1000) * (squares/1000))
+    gap_area = ceiling(default_clusterarea / ((squares/1000) * (squares/1000)))
   }
 
   if(nmoments < 2 || length(momentspaths) < 2){
