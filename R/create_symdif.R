@@ -24,7 +24,7 @@ create_symdif <- function(nmoments, area_field, perforation){
     try({moments$symdif[[mmtname]][[mmtname]] = 1}, silent = T)
 
     if(perforation){
-      cat("Perforation", sufix, "check")
+      cat("Perforation", sufix, "check\n")
       perfname = paste0(constants$PERF_FIELD_BASE, sufix)
       moments$perf[[perfname]] = select_perf(moments$symdif[[mmtname]], nmoments[[pairs[[i]][1]]])
     }

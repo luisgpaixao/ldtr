@@ -14,6 +14,10 @@
 #' @export
 writeLDT <- function(objLDT){
 
+  if(file.exists(objLDT@output)){
+    stop("Output file already exists, please check your data.\n", call. = T)
+  }
+
   if(!dir.exists(objLDT@temp_fold)){
     dir.create(objLDT@temp_fold)
   }
