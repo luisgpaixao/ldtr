@@ -16,6 +16,7 @@ create_moments <- function(momentspaths, sta){
     moments[[mmtname]] = st_read(momentspaths[i])
     moments[[mmtname]] = moments[[mmtname]][,"geometry"]
     if(st_crs(moments[[mmtname]]) != st_crs(sta)){
+      cat("CRS of Moment ", mmtname, " changed to ", st_crs(sta)$input, "\n")
       moments[[mmtname]] = st_transform(moments[[mmtname]], st_crs(sta))
     }
 
