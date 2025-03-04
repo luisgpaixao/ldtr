@@ -57,7 +57,7 @@ writeLDT <- function(objLDT){
 
   seq_area = seq(1, nrow(sta), objLDT@gap_area)
   if(seq_area[length(seq_area)]!=nrow(sta)){
-    seq_area = c(seq_area, (nrow(sta)+1))
+    seq_area = c(seq_area, (nrow(sta)))
   }
 
   # intersect
