@@ -1,13 +1,21 @@
 Package: ldtr
 Title: Perform Landscape Dynamics analysis in R
 Date: 2024-12-30
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: c(person(given = "Luís",
   family = "Paixão",
   role = c("aut", "cre"),
   email = "luispaixao@agroinsider.com",
-  comment = c(ORCID = "0000-0002-3070-9577")))
-Description: What the package does (one paragraph).
+  comment = c(ORCID = "0000-0002-3070-9577")),
+  person(given = "Rui",
+  family = "Machado",
+  role = c("aut"),
+  email = "rdpm@uevora.pt",
+  comment = c(ORCID = "0000-0002-4345-6636"))
+Description: The ldtr package implements the Landscape Dynamic Typology (LDT)
+ method developed by Machado et al. 2018. 
+ The main purpose is to assess land use / land cover changes
+ between several moments.
 License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
