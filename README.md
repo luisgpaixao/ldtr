@@ -30,8 +30,8 @@ obj <- createLDT(T, 2, 'StudyArea.shp',
 writeLDT(obj)
 
 ```
-This example performs the LDT method between 2 land cover moments, considering squares with a side of 10000 meters as analytical unit and patches bigger then 5000 square meters.
-It also considers perforation and forecast.
+This example computes the LDT method between two land cover moments, considering patches larger than 5000 square meters and using 10000 x 10000 meters quadrats as analytical units. It also calculates perforation and forecast.
+Check the related bibliography for detailed information on the Types of Dynamics.
 
 **Requirements and preliminary steps**
 
@@ -40,9 +40,9 @@ It also considers perforation and forecast.
 
 References:
 
-Forman, R.T.T., 1995. Land mosaics - The ecology of landscapes and regions. Cambridge University Press, Cambridge.
-
 Machado, R., Godinho, S., Pirnat, J., Neves, N., Santos, P., 2018. Assessment of landscape composition and configuration via spatial metrics combination: conceptual framework proposal and method improvement. Landsc. Res. 43, 652–664. https://doi.org/10.1080/01426397.2017.1336757
 
 Related references:
 Machado, R., Bayot, R., Godinho, S., Pirnat, J., Santos, P., & de Sousa-Neves, N. (2020). LDTtool: A toolbox to assess landscape dynamics. Environmental Modelling and Software, 133(August). https://doi.org/10.1016/j.envsoft.2020.104847
+
+Paixão, L., & Machado, R. (2023). LDT4QGIS: An open-source tool to enhance landscape analysis. Ecological Informatics, 75, 102073. https://doi.org/10.1016/j.ecoinf.2023.102073
