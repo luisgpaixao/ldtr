@@ -38,7 +38,7 @@ Up until this moment, there were two tools to automate the procedure: LDTtool [@
 
 # Example
 
-To demonstrate how LDTR works and the outputs it produces, we provide an example concerning Forest changes between the years 2000 and 2018, in the Iberian Peninsula. First, we installed the devtools package [@wickham2022] in RStudio (compulsory if not already installed), and used it to install LDTR directly from GitLab ([ldtr](https://gitlab.com/lgplgp/ldtr)). Next, we set the folder containing the input files as working directory.
+To demonstrate how LDTR works and the outputs it produces, we provide an example concerning Forest changes between the years 2000 and 2018, in the Iberian Peninsula. First, we installed the devtools package [@wickham2022] in RStudio (compulsory if not already installed), and used it to install LDTR directly from GitHub ([ldtr](https://github.com/luisgpaixao/ldtr)). Next, we set the folder containing the input files as working directory.
 
 The base data were extracted from CORINE Land Cover (CLC) maps for 2000 and 2018. First, the CLC maps were clipped using the Iberian Peninsula boundaries, and then the land cover category “3.1 Forests” (includes “3.1.1 Broad-leaved forest”, “3.1.2 Coniferous forest” and “3.1.3 Mixed forest”) was extracted and used as study object.
 
@@ -46,7 +46,7 @@ Concerning the LDTR, it requires basic configuration such as the paths to the in
 
 The basic code to define variables and settings is as follows:
 ```
-devtools::install_gitlab(Git path)
+devtools::install_github(Git path)
 library(ldtr)
 setwd(working dir path)
 
