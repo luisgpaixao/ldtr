@@ -20,6 +20,10 @@ affiliations:
 date: 10 April 2025
 engine: knitr
 bibliography: paper.bib
+output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
+---
 
 # Summary
 
