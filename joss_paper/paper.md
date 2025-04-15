@@ -1,10 +1,10 @@
 ---
 title: 'LDTR – An R package for landscape dynamics assessment'
-
 tags:
   - R
   - landscape
   - dynamics
+
 authors:
   - name: Luís Paixão
     orcid: 0000-0002-3070-9577
@@ -18,6 +18,7 @@ affiliations:
  - name: MED – Mediterranean Institute for Agriculture, Environment and Development & CHANGE –Global Change and Sustainability Institute, Institute for Advanced Studies and Research, Universidade de Évora, Pólo da Mitra, Évora 7006-554, Portugal
    index: 2
 date: 10 April 2025
+engine: knitr
 bibliography: paper.bib
 
 # Summary
