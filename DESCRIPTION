@@ -11,8 +11,7 @@ Authors@R: c(person(given = "Luís",
   family = "Machado",
   role = c("aut"),
   email = "rdpm@uevora.pt",
-  comment = c(ORCID = "0000-0002-4345-6636"))
-)
+  comment = c(ORCID = "0000-0002-4345-6636")))
 Description: The ldtr package implements the Landscape Dynamic Typology (LDT)
  method developed by Machado et al. 2018. 
  The main purpose is to assess land use / land cover changes
