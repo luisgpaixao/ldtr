@@ -5,11 +5,11 @@ ldtR is an R package that implements the Landscape Dynamic Typology (LDT) method
 ## Installation
 
 You can install the last version of ldtR from
-[GitLab](https://gitlab.com/) with:
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_gitlab("lgplgp/ldtr")
+devtools::install_github("luisgpaixao/ldtr")
 ```
 
 ## Usage
