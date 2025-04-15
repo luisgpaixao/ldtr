@@ -65,12 +65,12 @@ writeLDT <- function(objLDT){
 
   # multipart to singlepart
   mmt_single = create_singlepart(intersct, constants$AREAINICIAL_FIELD)
-  rm(intersct)
+  suppressWarnings(rm(intersct))
   gc()
 
   # patch
   mmt_patch = create_selectpatch(mmt_single, constants$AREAINICIAL_FIELD, objLDT@patches)
-  rm(mmt_single)
+  suppressWarnings(rm(mmt_single))
   gc()
 
   # join fields
@@ -84,7 +84,7 @@ writeLDT <- function(objLDT){
 
   vec_shp = c()
   for(seqs in range_sta){
-    rm(aux_sta, aux_mmt_patch, mmt_symdif_perf)
+    suppressWarnings(rm(aux_sta, aux_mmt_patch, mmt_symdif_perf))
     gc()
     if(objLDT@analysis_squares){
       aux_sta = sta[seq_area[seqs]:(seq_area[seqs+1]),]

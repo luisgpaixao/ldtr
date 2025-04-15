@@ -47,7 +47,8 @@ create_layouts <- function(nmoments, in_layer_path){
       vec_color = c(vec_color, dfOS[dfOS$tod == ocup$tod[a],]$color)
       vec_outline = c(vec_outline, dfOS[dfOS$tod == ocup$tod[a],]$outline)
       value = ocup$tod[a]
-      p = p + geom_sf(data = aux_shp[aux_shp[["tod"]] == ocup$tod[a],], aes_(color = value, fill = value), show.legend = T)
+      p = p + geom_sf(data = aux_shp[aux_shp[["tod"]] == value, ],
+                      aes(color = .data[["tod"]], fill = .data[["tod"]]), show.legend = T)
     }
     p = p + scale_fill_manual(name = "Types of Dynamics", values = vec_color) +
       scale_color_manual(name = "Types of Dynamics", values = vec_outline) +
@@ -70,8 +71,7 @@ create_layouts <- function(nmoments, in_layer_path){
                              pad_x = unit(0.05, "cm"),
                              pad_y = unit(0.05, "cm"),
                              height = unit(1, "cm"),
-                             width = unit(1, "cm"),
-                             color = "black")
+                             width = unit(1, "cm"))
 
     ggsave(out_png, plot = p, width = 15, height = 10, units = "cm")
 
