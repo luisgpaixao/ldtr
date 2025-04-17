@@ -10,12 +10,16 @@ valid_studyarea <- function(sta_path){
   
   sta = st_read(sta_path)
   if(nrow(sta)==0){
-    stop("Empty study area, please check your data.\n")
+    stop("Empty study area, please check your data.\n", call. = T)
   }
   
   sta = sta[,"geometry"]
-  if((is.null(st_crs(sta)$units)) || (st_crs(sta)$units != "m")){
+  if((is.na(st_crs(sta)$units)) || (is.null(st_crs(sta)$units)) || (st_crs(sta)$units != "m")){
     stop("CRS units of study area's Shapefile are not in meters, please check your data.\n", call. = T)
+  }
+  
+  if(! all(st_geometry_type(sta) %in% c("POLYGON", "MULTIPOLYGON"))){
+    stop("Study area's geometry type is not Polygon, please check your data.\n", call. = T)
   }
   
   return(sta)

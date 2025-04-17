@@ -13,7 +13,7 @@ create_moments <- function(momentspaths, sta){
   moments = list()
   for(i in 1:length(momentspaths)){
     mmtname = paste0("m", i)
-    moments[[mmtname]] = st_read(momentspaths[i])
+    moments[[mmtname]] = valid_moment(momentspaths[i], i)
     moments[[mmtname]] = moments[[mmtname]][,"geometry"]
     if(st_crs(moments[[mmtname]]) != st_crs(sta)){
       message("CRS of Moment ", mmtname, " changed to ", st_crs(sta)$input, "\n")
