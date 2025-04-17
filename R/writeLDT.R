@@ -35,12 +35,7 @@ writeLDT <- function(objLDT){
   }
 
   # study area
-  sta = st_read(objLDT@studyareapath)
-
-  sta = sta[,"geometry"]
-  if((is.null(st_crs(sta)$units)) || (st_crs(sta)$units != "m")){
-    stop("CRS units of study area's Shapefile are not in meters, please check your data.\n", call. = T)
-  }
+  sta = valid_studyarea(objLDT@studyareapath)
 
   # moments
   mmt = create_moments(objLDT@momentspaths, sta)
