@@ -13,5 +13,5 @@ multi_to_single <- function(in_layer){
   multi = in_layer %>% filter("MULTIPOLYGON" == st_geometry_type(geometry))
   multi = suppressWarnings(st_cast(multi, "POLYGON"))
 
-  return(rbind(single, multi))
+  return(suppressWarnings(rbind(single, multi)))
 }
