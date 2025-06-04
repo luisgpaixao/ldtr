@@ -9,8 +9,8 @@
 #' @export
 symmetrical_difference <- function(in_layer1, in_layer2){
 
-  dif1 = suppressWarnings(st_difference(in_layer1, st_union(st_combine(in_layer2))))
-  dif2 = suppressWarnings(st_difference(in_layer2, st_union(st_combine(in_layer1))))
+  dif1 = suppressWarnings(st_difference(in_layer1, st_make_valid(st_union(st_combine(in_layer2)))))
+  dif2 = suppressWarnings(st_difference(in_layer2, st_make_valid(st_union(st_combine(in_layer1)))))
 
   return(suppressWarnings(rbind(dif1, dif2)))
 }
