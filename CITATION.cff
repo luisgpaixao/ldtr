@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ldtr"
+version: "1.0.0"
+doi: 10.5281/zenodo.15665475
+date-released: 2025-06-14
+url: https://github.com/luisgpaixao/ldtr
+repository: https://github.com/luisgpaixao/ldtr
+repository-code: https://github.com/luisgpaixao/ldtr
+license: GPL-3.0
+authors:
+  - family-names: Paixão
+    given-names: Luis G.

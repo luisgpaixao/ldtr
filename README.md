@@ -47,3 +47,12 @@ Related references:
 Machado, R., Bayot, R., Godinho, S., Pirnat, J., Santos, P., & de Sousa-Neves, N. (2020). LDTtool: A toolbox to assess landscape dynamics. Environmental Modelling and Software, 133(August). https://doi.org/10.1016/j.envsoft.2020.104847
 
 Paixão, L., & Machado, R. (2023). LDT4QGIS: An open-source tool to enhance landscape analysis. Ecological Informatics, 75, 102073. https://doi.org/10.1016/j.ecoinf.2023.102073
+
+
+## Citation
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15665475.svg)](https://doi.org/10.5281/zenodo.15665475)
+
+If you use this software, please cite it as:
+
+**Paixão, L. G.** (2025). *ldtr* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.15665475
