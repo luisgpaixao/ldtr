@@ -11,6 +11,7 @@ createLDT(
   momentspaths,
   patches,
   squares,
+  spatialshift,
   perforation,
   forecast,
   output
@@ -37,6 +38,8 @@ Constructor for LDT objects.
 
 \item{\code{squares}}{an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.}
 
+\item{\code{spatialshift}}{a logical value representing if spatial shift is to be consider.}
+
 \item{\code{perforation}}{a logical value representing if perforation is to be consider.}
 
 \item{\code{forecast}}{a logical value representing if forecast is to be consider.}
@@ -49,7 +52,7 @@ Constructor for LDT objects.
 # set working directory
 setwd("/path_to_wd/")
 
-# create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, perforation and forecast
-objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, "outLDT.shp")
+# create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
+objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
 
 }

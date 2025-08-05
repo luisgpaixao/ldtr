@@ -8,6 +8,7 @@
 #' @slot momentspaths a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.
 #' @slot patches an integer value representing minimum area threshold of features, in square meters.
 #' @slot squares an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.
+#' @slot spatialshift a logical value representing if spatial shift is to be consider.
 #' @slot perforation a logical value representing if perforation is to be consider.
 #' @slot forecast a logical value representing if forecast is to be consider.
 #' @slot output a character value representing the path for the ESRI Shapefile output.
@@ -20,11 +21,11 @@
 #' # set working directory
 #' setwd("/path_to_wd/")
 #'
-#' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, perforation and forecast
-#' objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, "outLDT.shp")
+#' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
+#' objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
 #'
 createLDT <- function(analysis_squares, nmoments, studyareapath, momentspaths,
-                     patches, squares, perforation, forecast, output) {
+                     patches, squares, spatialshift, perforation, forecast, output) {
 
 
   default_clusterarea = 50000
@@ -44,13 +45,13 @@ createLDT <- function(analysis_squares, nmoments, studyareapath, momentspaths,
 
   if(analysis_squares){
     new("Ldt", analysis_squares = T, nmoments = nmoments, studyareapath = studyareapath,
-        momentspaths = momentspaths, patches = patches, squares = squares, perforation = perforation,
-        forecast = forecast, output = output, temp_fold = file.path(dirname(output), "temp" ),
+        momentspaths = momentspaths, patches = patches, squares = squares, spatialshift = spatialshift, 
+        perforation = perforation, forecast = forecast, output = output, temp_fold = file.path(dirname(output), "temp" ),
         cluster_area = default_clusterarea, gap_area = gap_area)
   }else{
     new("Ldt", analysis_squares = F, nmoments = nmoments, studyareapath = studyareapath,
-        momentspaths = momentspaths, patches = patches, squares = squares, perforation = perforation,
-        forecast = forecast, output = output, temp_fold = file.path(dirname(output), "temp" ),
+        momentspaths = momentspaths, patches = patches, squares = squares, spatialshift = spatialshift, 
+        perforation = perforation, forecast = forecast, output = output, temp_fold = file.path(dirname(output), "temp" ),
         cluster_area = default_clusterarea, gap_area = 1)
   }
 

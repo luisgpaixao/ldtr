@@ -23,8 +23,8 @@ Preforms the Landscape Dynamics process and exports an ESRI Shapefile and png ma
 # set working directory
 setwd("/path_to_wd/")
 
-# create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, perforation and forecast
-objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, "outLDT.shp")
+# create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
+objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
 
 # run LDT
 writeLDT(objLDT)

@@ -18,8 +18,8 @@
 #' # set working directory
 #' setwd("/path_to_wd/")
 #'
-#' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, perforation and forecast
-#' objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, "outLDT.shp")
+#' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
+#' objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
 #'
 #' # run LDT
 #' writeLDT(objLDT)
@@ -90,9 +90,14 @@ writeLDT <- function(objLDT){
     }
 
     # Symmetrical Difference and perforation
-    mmt_symdif_perf = create_symdif(aux_mmt_patch, constants$AREAINICIAL_FIELD, objLDT@perforation)
-    aux_sta = update_sta_symm(aux_sta, mmt_symdif_perf$symdif)
-
+    if(objLDT@spatialshift || objLDT@perforation){
+      mmt_symdif_perf = create_symdif(aux_mmt_patch, constants$AREAINICIAL_FIELD, objLDT@perforation)
+    }
+    
+    if(objLDT@spatialshift){
+      aux_sta = update_sta_symm(aux_sta, mmt_symdif_perf$symdif)
+    }
+    
     if(objLDT@perforation){
       aux_sta = update_sta_perf(aux_sta, mmt_symdif_perf$perf)
     }
@@ -100,7 +105,7 @@ writeLDT <- function(objLDT){
     cat("Finishing the process, please wait...\n")
 
     # final analysis fields
-    aux_sta = update_sta_ToD(aux_sta, objLDT@nmoments, objLDT@perforation, objLDT@forecast)
+    aux_sta = update_sta_ToD(aux_sta, objLDT@nmoments, objLDT@spatialshift, objLDT@perforation, objLDT@forecast)
 
     out_v_file = file.path(objLDT@temp_fold, paste0("v", seqs, ".shp"))
     st_write(aux_sta, out_v_file)

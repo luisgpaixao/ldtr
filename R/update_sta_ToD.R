@@ -4,12 +4,13 @@
 #'
 #' @param sta an sf Simple feature collection representing the study area for analysis.
 #' @param n_moment an integer value representing the number of moments for analysis.
+#' @param spatialshift a logical value representing if spatial shift is to be consider.
 #' @param perforation a logical value indicating if perforation should be consider.
 #' @param forecast a logical value indicating if forecast should be consider.
 #'
 #' @return an sf Simple feature collection representing the study area for analysis, updated with ToD fields.
 #' @export
-update_sta_ToD <- function(sta, n_moment, perforation, forecast){
+update_sta_ToD <- function(sta, n_moment, spatialshift, perforation, forecast){
 
   pairs = create_pairs(n_moment)
 
@@ -55,7 +56,11 @@ update_sta_ToD <- function(sta, n_moment, perforation, forecast){
     aux_pres2 = paste0(constants$PRESENCE_FIELD_BASE, pairs[[i]][2])
 
     sta[(sta[[aux_area]] == 0) & (sta[[aux_np]] == 0), aux_tod] = "A - No change"
-    sta[(sta[[aux_area]] == 0) & (sta[[aux_np]] == 0) & (sta[[aux_sym]] == 1), aux_tod] = "A1 - Spatial shift"
+    
+    if(spatialshift){
+      sta[(sta[[aux_area]] == 0) & (sta[[aux_np]] == 0) & (sta[[aux_sym]] == 1), aux_tod] = "A1 - Spatial shift"
+    }
+    
     sta[(sta[[aux_area]] == 0) & (sta[[aux_np]] > 0), aux_tod] = "B - Fragmentation per se"
     sta[(sta[[aux_area]] == 0) & (sta[[aux_np]] < 0), aux_tod] = "C - Aggregation per se"
     sta[(sta[[aux_area]] > 0) & (sta[[aux_np]] == 0), aux_tod] = "D - Gain"

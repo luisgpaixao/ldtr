@@ -4,12 +4,14 @@
 \alias{update_sta_ToD}
 \title{Update Type of Dynamics fields}
 \usage{
-update_sta_ToD(sta, n_moment, perforation, forecast)
+update_sta_ToD(sta, n_moment, spatialshift, perforation, forecast)
 }
 \arguments{
 \item{sta}{an sf Simple feature collection representing the study area for analysis.}
 
 \item{n_moment}{an integer value representing the number of moments for analysis.}
+
+\item{spatialshift}{a logical value representing if spatial shift is to be consider.}
 
 \item{perforation}{a logical value indicating if perforation should be consider.}
 
