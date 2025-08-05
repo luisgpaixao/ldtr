@@ -25,12 +25,12 @@ setwd("path/to/dir")
 obj <- createLDT(T, 2, 'StudyArea.shp',
                 c('Moment1.shp',
                   'Moment1.shp'),
-                5000, 10000, T, T, 'Output.shp')
+                5000, 10000, T, T, T, 'Output.shp')
 
 writeLDT(obj)
 
 ```
-This example computes the LDT method between two land cover moments, considering patches larger than 5000 square meters and using 10000 x 10000 meters quadrats as analytical units. It also calculates perforation and forecast.
+This example computes the LDT method between two land cover moments, considering patches larger than 5000 square meters and using 10000 x 10000 meters quadrats as analytical units. It also calculates spatial shift, perforation and forecast.
 Check the related bibliography for detailed information on the Types of Dynamics.
 
 **Requirements and preliminary steps**
