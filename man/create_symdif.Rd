@@ -17,5 +17,5 @@ create_symdif(nmoments, area_field, perforation)
 a list of lists containing sf Simple feature collections representing the symmetrical differences and perforations between all moments for analysis.
 }
 \description{
-Preform symmetrical differences and perforation between all moments of analysis.
+Performs symmetrical differences and perforation between all moments of analysis.
 }

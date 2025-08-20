@@ -1,6 +1,6 @@
 #' Area and Frequency Stats by feature's FID
 #'
-#' Given a moment of analysis clipped by the study area's features, creates a data frame with FID and respective values for total area and frequency of patches.
+#' Given a moment of analysis clipped by the study area's features, updates values for total area and frequency of patches.
 #'
 #' @param in_layer an sf Simple features collection representing the study area for analysis.
 #' @param in_df a data.frame with the same amount of rows and same order as the study area's sf Simple collection, containing information on FID, sum of areas and frequency of patches.

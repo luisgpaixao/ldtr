@@ -1,6 +1,6 @@
 #' A Custom S4 Class for an Ldt
 #'
-#' This class represents all the attributes necessary to preform a Land Dinamics process.
+#' This class represents all the attributes necessary to preform a Land Dynamics process.
 #'
 #' @slot analysis_squares a logical value representing if the type of analysis is done by a regular grid of squares. If false, the type of analysis is done by districts.
 #' @slot nmoments an integer value representing the amount of moments to consider.

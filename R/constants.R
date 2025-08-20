@@ -1,4 +1,4 @@
-#' Predifined Fields variables
+#' Predefined Fields variables
 #'
 #' These variables names should not be modified.
 #'

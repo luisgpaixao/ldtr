@@ -1,6 +1,6 @@
 #' Create Intersections
 #'
-#' Creates a list of moments for the Landscape Dynamics analysis, clipped by a study area layer.
+#' Creates a list of moments for the Landscape Dynamics analysis, intersected by a study area layer.
 #' Area field is updated for all features.
 #'
 #' @param nmoments a list of sf Simple feature collections representing the moments for analysis.

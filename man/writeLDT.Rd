@@ -10,7 +10,7 @@ writeLDT(objLDT)
 an sf Simple feature collection, representing the Land Dynamics output.
 }
 \description{
-Preforms the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
+Performs the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
 }
 \section{Slots}{
 

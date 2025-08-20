@@ -5,7 +5,7 @@
 \alias{Ldt-class}
 \title{A Custom S4 Class for an Ldt}
 \description{
-This class represents all the attributes necessary to preform a Land Dinamics process.
+This class represents all the attributes necessary to preform a Land Dynamics process.
 }
 \section{Slots}{
 
@@ -21,6 +21,8 @@ This class represents all the attributes necessary to preform a Land Dinamics pr
 \item{\code{patches}}{an integer value representing minimum area threshold of features, in square meters.}
 
 \item{\code{squares}}{an integer value representing square side dimension, in meters. Only used if type of analysis e set to squares.}
+
+\item{\code{spatialshift}}{a logical value representing if spatial shift is to be consider.}
 
 \item{\code{perforation}}{a logical value representing if perforation is to be consider.}
 

@@ -1,6 +1,6 @@
 #' Write LDT output
 #'
-#' Preforms the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
+#' Performs the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
 #'
 #' @slot objLDT an object of class LDT.
 #'

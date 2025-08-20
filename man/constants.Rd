@@ -3,7 +3,7 @@
 \docType{data}
 \name{constants}
 \alias{constants}
-\title{Predifined Fields variables}
+\title{Predefined Fields variables}
 \format{
 A set of predefined constants representing the fields used in the analysis.
 }

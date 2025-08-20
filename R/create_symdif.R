@@ -1,6 +1,6 @@
 #' Create symmetrical difference between moments
 #'
-#' Preform symmetrical differences and perforation between all moments of analysis.
+#' Performs symmetrical differences and perforation between all moments of analysis.
 #'
 #' @param nmoments a list of sf Simple feature collections representing the moments for analysis.
 #' @param area_field a character indicating the area field to be updated.

@@ -19,5 +19,5 @@ join_FID_AREA(in_layer, in_df, area_field, count_field)
 an sf Simple features collection representing the study area for analysis, updated with area and frequency for a moment of analysis.
 }
 \description{
-Given a moment of analysis clipped by the study area's features, creates a data frame with FID and respective values for total area and frequency of patches.
+Given a moment of analysis clipped by the study area's features, updates values for total area and frequency of patches.
 }

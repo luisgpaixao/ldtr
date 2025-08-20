@@ -17,6 +17,6 @@ create_intersect(nmoments, sta, field)
 a list of sf Simple feature collections representing the moments for analysis, clipped by study area.
 }
 \description{
-Creates a list of moments for the Landscape Dynamics analysis, clipped by a study area layer.
+Creates a list of moments for the Landscape Dynamics analysis, intersected by a study area layer.
 Area field is updated for all features.
 }
