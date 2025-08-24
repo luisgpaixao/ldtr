@@ -8,6 +8,8 @@ valid_moment(mm_path, index)
 }
 \arguments{
 \item{mm_path}{an ESRI Shapefile path representing the moment.}
+
+\item{index}{an interger value indicating moment index}
 }
 \value{
 an sf Simple feature collection representing the moment.

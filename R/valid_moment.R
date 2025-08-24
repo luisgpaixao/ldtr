@@ -3,6 +3,7 @@
 #' Read moment data and check if it's valid.
 #'
 #' @param mm_path an ESRI Shapefile path representing the moment.
+#' @param index an interger value indicating moment index
 #'
 #' @return an sf Simple feature collection representing the moment.
 #' @export
