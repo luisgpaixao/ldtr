@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # set working directory
 #' setwd("/path_to_wd/")
 #'
