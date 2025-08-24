@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' # set working directory
 #' setwd("/path_to_wd/")
 #'
@@ -23,7 +23,7 @@
 #'
 #' # run LDT
 #' writeLDT(objLDT)
-#'
+#' }
 writeLDT <- function(objLDT){
 
   if(file.exists(objLDT@output)){

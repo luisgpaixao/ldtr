@@ -17,13 +17,13 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' # set working directory
 #' setwd("/path_to_wd/")
 #'
 #' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
 #' objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
-#'
+#' }
 createLDT <- function(analysis_squares, nmoments, studyareapath, momentspaths,
                      patches, squares, spatialshift, perforation, forecast, output) {
 
