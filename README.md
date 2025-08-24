@@ -1,4 +1,7 @@
 # ldtR
+
+[![R-CMD-check](https://github.com/luisgpaixao/ldtr/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/luisgpaixao/ldtr/actions/workflows/R-CMD-check.yml)
+
 ldtR is an R package that implements the Landscape Dynamic Typology (LDT) method developed by Machado et al. 2018. The main purpose is to assess land use / land cover (LUCL) changes between several moments, considering the composition and configuration of a binary landscape.
 
 

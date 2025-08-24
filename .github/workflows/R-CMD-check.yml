@@ -27,7 +27,7 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
-      # Install R package dependencies using prebuilt binaries (faster)
+      # Install only the R package dependencies as binaries
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: sf, any::rcmdcheck
@@ -38,4 +38,3 @@ jobs:
                 error_on = "warning",
                 check_dir = "check")
         shell: Rscript {0}
-
