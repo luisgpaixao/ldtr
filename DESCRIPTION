@@ -1,6 +1,6 @@
 Package: ldtr
 Title: Perform Landscape Dynamics analysis in R
-Date: 2025-08-06
+Date: 2025-08-24
 Version: 2.0.1
 Authors@R: c(person(given = "Luís",
   family = "Paixão",

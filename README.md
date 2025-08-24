@@ -54,8 +54,8 @@ Paixão, L., & Machado, R. (2023). LDT4QGIS: An open-source tool to enhance land
 
 ## Citation
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16749262.svg)](https://doi.org/10.5281/zenodo.16749262)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16749262.svg)](https://doi.org/10.5281/zenodo.15665474)
 
 If you use this software, please cite it as:
 
-**Paixão, L. G.** (2025). *ldtr* (v2.0.1). Zenodo. https://doi.org/10.5281/zenodo.16749262
+**Paixão, L. G.** (2025). *ldtr* (v2.0.1). Zenodo. https://doi.org/10.5281/zenodo.15665474
