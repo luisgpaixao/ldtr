@@ -6,7 +6,7 @@ test_that("write LDT", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
 
-  obj <- createLDT(T, 2, stda, c(m1, m2), 3000, 3000, F, F, outp_shp)
+  obj <- createLDT(T, 2, stda, c(m1, m2), 3000, 3000, T, F, F, outp_shp)
   outp <- writeLDT(obj)
 
   expect_type(st_read(outp_shp), "list")
@@ -33,7 +33,7 @@ test_that("check all empty moments", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
 
-  obj <- createLDT(T, 2, stda, c(m1, m2), 3000, 3000, F, F, outp_shp)
+  obj <- createLDT(T, 2, stda, c(m1, m2), 3000, 3000, T, F, F, outp_shp)
   outp <- writeLDT(obj)
 
   expect_type(st_read(outp_shp), "list")

@@ -6,7 +6,7 @@ test_that("tod A no change and A1 shift", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "A - No change")
@@ -17,7 +17,7 @@ test_that("tod A no change and A1 shift", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "A1 - Spatial shift")
@@ -34,7 +34,7 @@ test_that("tod B fragmentation", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "B - Fragmentation per se")
@@ -51,7 +51,7 @@ test_that("tod C aggregation", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "C - Aggregation per se")
@@ -68,7 +68,7 @@ test_that("tod D gain", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "D - Gain")
@@ -85,7 +85,7 @@ test_that("tod E loss", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "E - Loss")
@@ -102,7 +102,7 @@ test_that("tod E1 perf", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, T, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "E1 - Perforation")
@@ -119,7 +119,7 @@ test_that("tod F increment and H decrement", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "F - NP increment by gain")
@@ -127,7 +127,7 @@ test_that("tod F increment and H decrement", {
   file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
   
   
-  obj <- createLDT(F, 2, stda, c(m2, m1), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m2, m1), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "H - NP decrement by loss")
@@ -144,7 +144,7 @@ test_that("tod G aggreg and I frag", {
   outp_dir <- system.file("extdata", package = "ldtr")
   outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "G - Aggregation by gain")
@@ -152,7 +152,7 @@ test_that("tod G aggreg and I frag", {
   file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
   
   
-  obj <- createLDT(F, 2, stda, c(m2, m1), 0, 0, F, F, outp_shp)
+  obj <- createLDT(F, 2, stda, c(m2, m1), 0, 0, T, F, F, outp_shp)
   outp <- writeLDT(obj)
   
   expect_true(outp$ToD_12 == "I - Fragmentation by loss")
