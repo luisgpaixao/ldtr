@@ -22,30 +22,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-    
+
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
-    
-      - name: Install system dependencies for Linux
-        if: runner.os == 'Linux'
-        run: |
-          sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
-          sudo apt-get update -y
-          sudo apt-get install -y \
-            libudunits2-dev \
-            libgdal-dev \
-            libgeos-dev \
-            libproj-dev
-    
+
+      # Install R package dependencies using prebuilt binaries (faster)
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
-          needs: check
-    
+          extra-packages: sf, any::rcmdcheck
+
       - name: Check
         run: rcmdcheck::rcmdcheck(
                 args = c("--no-manual", "--ignore-vignettes", "--no-build-vignettes"),
                 error_on = "warning",
                 check_dir = "check")
         shell: Rscript {0}
+
