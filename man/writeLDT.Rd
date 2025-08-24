@@ -19,7 +19,7 @@ Performs the Landscape Dynamics process and exports an ESRI Shapefile and png ma
 }}
 
 \examples{
-
+\donttest{
 # set working directory
 setwd("/path_to_wd/")
 
@@ -28,5 +28,5 @@ objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000
 
 # run LDT
 writeLDT(objLDT)
-
+}
 }

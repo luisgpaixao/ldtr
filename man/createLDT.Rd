@@ -48,7 +48,7 @@ Constructor for LDT objects.
 }}
 
 \examples{
-\dontrun{
+\donttest{
 # set working directory
 setwd("/path_to_wd/")
 
