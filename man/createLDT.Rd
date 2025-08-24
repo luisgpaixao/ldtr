@@ -17,36 +17,33 @@ createLDT(
   output
 )
 }
+\arguments{
+\item{analysis_squares}{a logical value representing if the type of analysis is done by a regular grid of squares. If false, the type of analysis is done by districts.}
+
+\item{nmoments}{an integer value representing the amount of moments to consider.}
+
+\item{studyareapath}{a character value representing the path for the ESRI Shapefile that defines the study area.}
+
+\item{momentspaths}{a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.}
+
+\item{patches}{an integer value representing minimum area threshold of features, in square meters.}
+
+\item{squares}{an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.}
+
+\item{spatialshift}{a logical value representing if spatial shift is to be consider.}
+
+\item{perforation}{a logical value representing if perforation is to be consider.}
+
+\item{forecast}{a logical value representing if forecast is to be consider.}
+
+\item{output}{a character value representing the path for the ESRI Shapefile output.}
+}
 \value{
 an LDT object.
 }
 \description{
 Constructor for LDT objects.
 }
-\section{Slots}{
-
-\describe{
-\item{\code{analysis_squares}}{a logical value representing if the type of analysis is done by a regular grid of squares. If false, the type of analysis is done by districts.}
-
-\item{\code{nmoments}}{an integer value representing the amount of moments to consider.}
-
-\item{\code{studyareapath}}{a character value representing the path for the ESRI Shapefile that defines the study area.}
-
-\item{\code{momentspaths}}{a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.}
-
-\item{\code{patches}}{an integer value representing minimum area threshold of features, in square meters.}
-
-\item{\code{squares}}{an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.}
-
-\item{\code{spatialshift}}{a logical value representing if spatial shift is to be consider.}
-
-\item{\code{perforation}}{a logical value representing if perforation is to be consider.}
-
-\item{\code{forecast}}{a logical value representing if forecast is to be consider.}
-
-\item{\code{output}}{a character value representing the path for the ESRI Shapefile output.}
-}}
-
 \examples{
 \donttest{
 # set working directory

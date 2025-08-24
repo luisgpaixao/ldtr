@@ -2,16 +2,16 @@
 #'
 #' Constructor for LDT objects.
 #'
-#' @slot analysis_squares a logical value representing if the type of analysis is done by a regular grid of squares. If false, the type of analysis is done by districts.
-#' @slot nmoments an integer value representing the amount of moments to consider.
-#' @slot studyareapath a character value representing the path for the ESRI Shapefile that defines the study area.
-#' @slot momentspaths a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.
-#' @slot patches an integer value representing minimum area threshold of features, in square meters.
-#' @slot squares an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.
-#' @slot spatialshift a logical value representing if spatial shift is to be consider.
-#' @slot perforation a logical value representing if perforation is to be consider.
-#' @slot forecast a logical value representing if forecast is to be consider.
-#' @slot output a character value representing the path for the ESRI Shapefile output.
+#' @param analysis_squares a logical value representing if the type of analysis is done by a regular grid of squares. If false, the type of analysis is done by districts.
+#' @param nmoments an integer value representing the amount of moments to consider.
+#' @param studyareapath a character value representing the path for the ESRI Shapefile that defines the study area.
+#' @param momentspaths a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.
+#' @param patches an integer value representing minimum area threshold of features, in square meters.
+#' @param squares an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.
+#' @param spatialshift a logical value representing if spatial shift is to be consider.
+#' @param perforation a logical value representing if perforation is to be consider.
+#' @param forecast a logical value representing if forecast is to be consider.
+#' @param output a character value representing the path for the ESRI Shapefile output.
 #'
 #' @return an LDT object.
 #' @export
