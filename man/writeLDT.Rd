@@ -6,18 +6,15 @@
 \usage{
 writeLDT(objLDT)
 }
+\arguments{
+\item{objLDT}{an object of class LDT.}
+}
 \value{
 an sf Simple feature collection, representing the Land Dynamics output.
 }
 \description{
 Performs the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
 }
-\section{Slots}{
-
-\describe{
-\item{\code{objLDT}}{an object of class LDT.}
-}}
-
 \examples{
 \donttest{
 # set working directory
