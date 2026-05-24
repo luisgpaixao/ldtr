@@ -2,10 +2,10 @@
 #'
 #' This class represents all the attributes necessary to preform a Land Dynamics process.
 #'
-#' @slot analysis_squares a logical value representing if the type of analysis is done by a regular grid of squares. If false, the type of analysis is done by districts.
+#' @slot analysis_squares a logical value representing if the type of analysis is done by a regular grid of squares. If FALSE, the type of analysis is done by districts.
 #' @slot nmoments an integer value representing the amount of moments to consider.
-#' @slot studyareapath a character value representing the path for the ESRI Shapefile that defines the study area.
-#' @slot momentspaths a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.
+#' @slot studyarea a sf polygon layer object, from sf package, representing the study area.
+#' @slot moments a list of sf polygon layer objects, from sf package, representing the moments for analysis, by chronological order.
 #' @slot patches an integer value representing minimum area threshold of features, in square meters.
 #' @slot squares an integer value representing square side dimension, in meters. Only used if type of analysis e set to squares.
 #' @slot spatialshift a logical value representing if spatial shift is to be consider.
@@ -22,8 +22,8 @@ setClass(
   slots = list(
     analysis_squares = "logical",
     nmoments = "numeric",
-    studyareapath = "character",
-    momentspaths = "character",
+    studyarea = "sf",
+    moments = "list",
     patches = "numeric",
     squares = "numeric",
     spatialshift = "logical",
@@ -34,4 +34,47 @@ setClass(
     cluster_area = "numeric",
     gap_area = "numeric"
   )
+,
+
+validity = function(object) {
+  
+  # studyarea must be polygon sf
+  if (!inherits(object@studyarea, "sf")) {
+    return("studyarea must be an sf object")
+  }
+  
+  geom_type_study <- unique(sf::st_geometry_type(object@studyarea))
+  
+  if (!all(geom_type_study %in% c("POLYGON", "MULTIPOLYGON"))) {
+    return("studyarea must contain polygon geometries")
+  }
+  
+  # moments must be list of sf polygon objects
+  if (!is.list(object@moments)) {
+    return("moments must be a list")
+  }
+  
+  for (i in seq_along(object@moments)) {
+    
+    x <- object@moments[[i]]
+    
+    if (!inherits(x, "sf")) {
+      return(
+        paste0("moments[[", i, "]] is not an sf object")
+      )
+    }
+    
+    geom_type <- unique(sf::st_geometry_type(x))
+    
+    if (!all(geom_type %in% c("POLYGON", "MULTIPOLYGON"))) {
+      return(
+        paste0(
+          "moments[[", i, "]] must contain polygon geometries"
+        )
+      )
+    }
+  }
+  
+  TRUE
+}
 )

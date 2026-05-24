@@ -15,12 +15,11 @@
 #'
 #' @examples
 #' \donttest{
-#' # set working directory
-#' setwd("/path_to_wd/")
 #'
 #' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
-#' objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
-#'
+#' objLDT <- createLDT("/path_to_wd/studyarea.shp", c("/path_to_wd/moment1.shp", "/path_to_wd/moment2.shp"), patches=1000, squares=30000, analysis_squares=T, spatialshift=T, perforation=T, 
+#' forecast=T, output="/path_to_output/outLDT.shp")
+#' 
 #' # run LDT
 #' writeLDT(objLDT)
 #' }

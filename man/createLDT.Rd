@@ -5,38 +5,35 @@
 \title{Create LDT object}
 \usage{
 createLDT(
-  analysis_squares,
-  nmoments,
   studyareapath,
   momentspaths,
-  patches,
-  squares,
-  spatialshift,
-  perforation,
-  forecast,
-  output
+  patches = 5000,
+  squares = 10000,
+  analysis_squares = T,
+  spatialshift = F,
+  perforation = F,
+  forecast = F,
+  output = NULL
 )
 }
 \arguments{
-\item{analysis_squares}{a logical value representing if the type of analysis is done by a regular grid of squares. If false, the type of analysis is done by districts.}
-
-\item{nmoments}{an integer value representing the amount of moments to consider.}
-
 \item{studyareapath}{a character value representing the path for the ESRI Shapefile that defines the study area.}
 
 \item{momentspaths}{a vector of character values representing the paths for the ESRI Shapefiles that defines the moments for analysis, by chronological order.}
 
-\item{patches}{an integer value representing minimum area threshold of features, in square meters.}
+\item{patches}{an integer value representing minimum area threshold of features, in square meters. Default to 5000.}
 
-\item{squares}{an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares.}
+\item{squares}{an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares. Default to 10000.}
 
-\item{spatialshift}{a logical value representing if spatial shift is to be consider.}
+\item{analysis_squares}{a logical value representing the type of analysis. If TRUE, the analysis is done by a regular grid of squares. If FALSE, the analysis is done by districts. Default to TRUE.}
 
-\item{perforation}{a logical value representing if perforation is to be consider.}
+\item{spatialshift}{a logical value representing if spatial shift is to be consider. Default to FALSE.}
 
-\item{forecast}{a logical value representing if forecast is to be consider.}
+\item{perforation}{a logical value representing if perforation is to be consider. Default to FALSE.}
 
-\item{output}{a character value representing the path for the ESRI Shapefile output.}
+\item{forecast}{a logical value representing if forecast is to be consider. Default to FALSE.}
+
+\item{output}{a character value representing the path for the ESRI Shapefile output. Optional.}
 }
 \value{
 an LDT object.
@@ -46,10 +43,9 @@ Constructor for LDT objects.
 }
 \examples{
 \donttest{
-# set working directory
-setwd("/path_to_wd/")
 
 # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
-objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
+objLDT <- createLDT("/path_to_wd/studyarea.shp", c("/path_to_wd/moment1.shp", "/path_to_wd/moment2.shp"), patches=1000, squares=30000, analysis_squares=T, spatialshift=T, perforation=T, 
+forecast=T, output="/path_to_output/outLDT.shp")
 }
 }
