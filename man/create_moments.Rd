@@ -4,15 +4,15 @@
 \alias{create_moments}
 \title{Create Moments}
 \usage{
-create_moments(momentspaths, sta)
+create_moments(momentslist, sta)
 }
 \arguments{
-\item{momentspaths}{a list of ESRI Shapefiles paths representing the Moments for analysis.}
+\item{momentslist}{a list of sf Simple polygon feature collections, from sf package, representing the moments for analysis, by chronological order.}
 
-\item{sta}{an sf Simple feature collection representing the study area for analysis.}
+\item{sta}{a sf Simple polygon feature collection, from sf package, representing the study area for analysis.}
 }
 \value{
-a list of sf Simple feature collections representing the moments for analysis.
+a list of sf Simple polygon feature collections representing the moments for analysis.
 }
 \description{
 Creates a list of moments for the Landscape Dynamics analysis.

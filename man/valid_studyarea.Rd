@@ -4,14 +4,14 @@
 \alias{valid_studyarea}
 \title{Validate study area}
 \usage{
-valid_studyarea(sta_path)
+valid_studyarea(sta)
 }
 \arguments{
-\item{sta_path}{an ESRI Shapefile path representing the study area.}
+\item{sta}{a sf Simple polygon feature collection, from sf package, representing the study area.}
 }
 \value{
-an sf Simple feature collection representing the study area.
+a sf Simple polygon feature collection, from sf package, representing the study area.
 }
 \description{
-Read study area data and check if it's valid.
+Check if study areas's data is valid.
 }

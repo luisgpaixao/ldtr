@@ -4,12 +4,15 @@
 \alias{create_layouts}
 \title{Create layouts}
 \usage{
-create_layouts(nmoments, in_layer_path)
+create_layouts(nmoments, in_layer)
 }
 \arguments{
 \item{nmoments}{an integer value representing the number of moments of analysis.}
 
-\item{in_layer_path}{a character value representing the path for the ESRI Shapefile final output.}
+\item{in_layer}{sf Simple polygon feature collection, representing the Land Dynamics output.}
+}
+\value{
+a list of ggplot objects, representing all Land Dynamics output layout maps.
 }
 \description{
 Creates all possible output PNG maps.

@@ -3,12 +3,15 @@
 #' Creates all possible output PNG maps.
 #'
 #' @param nmoments an integer value representing the number of moments of analysis.
-#' @param in_layer_path a character value representing the path for the ESRI Shapefile final output.
+#' @param in_layer sf Simple polygon feature collection, representing the Land Dynamics output.
+#' 
+#' @return a list of ggplot objects, representing all Land Dynamics output layout maps.
+#' 
 #' @export
-create_layouts <- function(nmoments, in_layer_path){
+create_layouts <- function(nmoments, in_layer){
 
-  in_shp = st_read(in_layer_path)
-
+  list_png = list()
+  
   colors_tod = c("transparent", "grey", "#005ce6", "#73b2ff", "#4de600",
                  "#ff5500", "#a83800", "#38a800", "#55ff00",
                  "#e69900", "#ff0000","transparent")
@@ -27,9 +30,8 @@ create_layouts <- function(nmoments, in_layer_path){
   for(i in 1:length(pairs)){
 
     tod_field = paste0(constants$TOD_FIELD_BASE, pairs[[i]][1], pairs[[i]][2])
-    out_png = gsub(".shp", paste0("_", tod_field, ".png"), in_layer_path)
 
-    aux_shp = in_shp
+    aux_shp = in_layer
     names(aux_shp)[names(aux_shp)== tod_field] = "tod"
 
     aux_shp = left_join(aux_shp, dfOS, by = "tod", copy = F)
@@ -73,13 +75,15 @@ create_layouts <- function(nmoments, in_layer_path){
                              height = unit(1, "cm"),
                              width = unit(1, "cm"))
 
-    ggsave(out_png, plot = p, width = 15, height = 10, units = "cm")
-
+    #ggsave(out_png, plot = p, width = 15, height = 10, units = "cm")
+    list_png[[tod_field]] = p
+    
     if(pairs[[i]][1] == 1 & pairs[[i]][2] == nmoments){
       plot(p)
     }
 
   }
 
+  return(list_png)
 
 }

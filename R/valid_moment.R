@@ -1,15 +1,13 @@
 #' Validate moment
 #'
-#' Read moment data and check if it's valid.
+#' Check if moment's data is valid.
 #'
-#' @param mm_path an ESRI Shapefile path representing the moment.
-#' @param index an interger value indicating moment index
+#' @param mm a sf Simple polygon feature collection representing the moment.
+#' @param index an integer value indicating moment index
 #'
-#' @return an sf Simple feature collection representing the moment.
+#' @return a sf Simple polygon feature collection representing the moment.
 #' @export
-valid_moment <- function(mm_path, index){
-  
-  mm = st_read(mm_path)
+valid_moment <- function(mm, index){
   
   if(is.na(st_crs(mm))){
     stop(paste0("CRS of moment", index, " not defined, please check your data.\n"), call. = T)

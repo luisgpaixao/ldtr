@@ -4,16 +4,16 @@
 \alias{valid_moment}
 \title{Validate moment}
 \usage{
-valid_moment(mm_path, index)
+valid_moment(mm, index)
 }
 \arguments{
-\item{mm_path}{an ESRI Shapefile path representing the moment.}
+\item{mm}{a sf Simple polygon feature collection representing the moment.}
 
-\item{index}{an interger value indicating moment index}
+\item{index}{an integer value indicating moment index}
 }
 \value{
-an sf Simple feature collection representing the moment.
+a sf Simple polygon feature collection representing the moment.
 }
 \description{
-Read moment data and check if it's valid.
+Check if moment's data is valid.
 }

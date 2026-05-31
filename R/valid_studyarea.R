@@ -1,14 +1,13 @@
 #' Validate study area
 #'
-#' Read study area data and check if it's valid.
+#' Check if study areas's data is valid.
 #'
-#' @param sta_path an ESRI Shapefile path representing the study area.
+#' @param sta a sf Simple polygon feature collection, from sf package, representing the study area.
 #'
-#' @return an sf Simple feature collection representing the study area.
+#' @return a sf Simple polygon feature collection, from sf package, representing the study area.
 #' @export
-valid_studyarea <- function(sta_path){
+valid_studyarea <- function(sta){
   
-  sta = st_read(sta_path)
   if(nrow(sta)==0){
     stop("Empty study area, please check your data.\n", call. = T)
   }

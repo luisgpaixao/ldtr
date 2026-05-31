@@ -1,10 +1,12 @@
 #' Write LDT output
 #'
-#' Performs the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
+#' Performs the Landscape Dynamics process and returns a sf Simple polygon feature collection and a list of ggplot maps.
 #'
-#' @param objLDT an object of class LDT.
+#' @param objLDT an object of class `LDT`.
+#' @param savemaps a logical value representing if output maps should be exported. Default to `FALSE`.
+#' @param outfolder a character value representing the path for output folder. Used only when `savemaps = TRUE`
 #'
-#' @return an sf Simple feature collection, representing the Land Dynamics output.
+#' @return a list with 2 elements: a sf Simple polygon feature collection representing the Land Dynamics output, and a list of ggplot objects, representing all Land Dynamics output layout maps.
 #'
 #' @import sf
 #' @import dplyr
@@ -23,7 +25,7 @@
 #' # run LDT
 #' writeLDT(objLDT)
 #' }
-writeLDT <- function(objLDT){
+writeLDT <- function(objLDT, savemaps = F, outfolder = NULL){
 
   if(file.exists(objLDT@output)){
     stop("Output file already exists, please check your data.\n", call. = T)
@@ -106,7 +108,7 @@ writeLDT <- function(objLDT){
     # final analysis fields
     aux_sta = update_sta_ToD(aux_sta, objLDT@nmoments, objLDT@spatialshift, objLDT@perforation, objLDT@forecast)
 
-    out_v_file = file.path(objLDT@temp_fold, paste0("v", seqs, ".shp"))
+    out_v_file = file.path(objLDT@temp_fold, paste0("v", seqs, ".gpkg"))
     st_write(aux_sta, out_v_file)
     vec_shp = c(vec_shp, out_v_file)
 
@@ -119,10 +121,23 @@ writeLDT <- function(objLDT){
 
   out_shp = do.call("rbind", shp_list)
 
-  st_write(out_shp, objLDT@output)
+  # st_write(out_shp, objLDT@output)
   unlink(objLDT@temp_fold, recursive = T)
 
-  create_layouts(objLDT@nmoments, objLDT@output)
+  layouts = create_layouts(objLDT@nmoments, out_shp)
+  
+  if(savemaps){
+    
+    if(is.null(outfolder)){
+      cat("No output folder was set! Optionally save ggplot objects with ggplot2 functions!\n")
+      
+    }else{
+        for(i in 1:length(layouts)){
+          out_png = file.path(outfolder, paste0(names(layouts[i]), ".png"))
+          ggsave(out_png, plot = layouts[i], width = 15, height = 10, units = "cm")
+        }
+      }
+    }
 
-  return(out_shp)
+  return(list(ldt_output = out_shp, layouts = layouts))
 }

@@ -4,24 +4,27 @@
 \alias{writeLDT}
 \title{Write LDT output}
 \usage{
-writeLDT(objLDT)
+writeLDT(objLDT, savemaps = F, outfolder = NULL)
 }
 \arguments{
-\item{objLDT}{an object of class LDT.}
+\item{objLDT}{an object of class \code{LDT}.}
+
+\item{savemaps}{a logical value representing if output maps should be exported. Default to \code{FALSE}.}
+
+\item{outfolder}{a character value representing the path for output folder. Used only when \code{savemaps = TRUE}}
 }
 \value{
-an sf Simple feature collection, representing the Land Dynamics output.
+a list with 2 elements: a sf Simple polygon feature collection representing the Land Dynamics output, and a list of ggplot objects, representing all Land Dynamics output layout maps.
 }
 \description{
-Performs the Landscape Dynamics process and exports an ESRI Shapefile and png maps as outputs.
+Performs the Landscape Dynamics process and returns a sf Simple polygon feature collection and a list of ggplot maps.
 }
 \examples{
 \donttest{
-# set working directory
-setwd("/path_to_wd/")
 
 # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
-objLDT <- createLDT(T, 2, "studyarea.shp", c("moment1.shp", "moment2.shp"), 1000, 30000, T, T, T, "outLDT.shp")
+objLDT <- createLDT("/path_to_wd/studyarea.shp", c("/path_to_wd/moment1.shp", "/path_to_wd/moment2.shp"), patches=1000, squares=30000, analysis_squares=T, spatialshift=T, perforation=T, 
+forecast=T, output="/path_to_output/outLDT.shp")
 
 # run LDT
 writeLDT(objLDT)
