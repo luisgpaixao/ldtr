@@ -15,11 +15,13 @@ writeLDT(
 \arguments{
 \item{objLDT}{an object of class \code{LDT}.}
 
-\item{saveoutput}{a logical value representing if output layer should be exported. Default to \code{FALSE}. If \code{TRUE}}
+\item{saveoutput}{a logical value representing if output layer should be exported. Default to \code{FALSE}.}
 
 \item{savemaps}{a logical value representing if output maps should be exported. Default to \code{FALSE}.}
 
-\item{outfolder}{a character value representing the path for output folder. Used only when \code{savemaps = TRUE}}
+\item{layername}{a character value representing the layer basename. Used only if \code{saveoutput = TRUE} or \code{savemaps = TRUE}.}
+
+\item{outfolder}{a character value representing the path for output folder. Used only if \code{saveoutput = TRUE} or \code{savemaps = TRUE}.}
 }
 \value{
 a list with 2 elements: a sf Simple polygon feature collection representing the Land Dynamics output, and a list of ggplot objects, representing all Land Dynamics output layout maps.

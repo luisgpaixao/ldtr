@@ -3,27 +3,47 @@ test_that("tod A no change and A1 shift", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m1.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m2.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                        analysis_squares=F, spatialshift=T, perforation=F, 
+                        forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "A - No change")
+  expect_true(outp$ldt_output$ToD_12 == "A - No change")
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
   
   m2 <- system.file("extdata", "Single_m1_shift.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "A1 - Spatial shift")
+  expect_true(outp$ldt_output$ToD_12 == "A1 - Spatial shift")
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
   
+  stda <- system.file("extdata", "single_poly.gpkg", package = "ldtr")
+  m1 <- system.file("extdata", "Single_m1.gpkg", package = "ldtr")
+  m2 <- system.file("extdata", "Single_m2.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "A - No change")
+  
+  
+  m2 <- system.file("extdata", "Single_m1_shift.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "A1 - Spatial shift")
 })
 
 test_that("tod B fragmentation", {
@@ -31,15 +51,25 @@ test_that("tod B fragmentation", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m1.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m2_frag.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "B - Fragmentation per se")
+  expect_true(outp$ldt_output$ToD_12 == "B - Fragmentation per se")
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  
+  stda <- system.file("extdata", "single_poly.gpkg", package = "ldtr")
+  m1 <- system.file("extdata", "Single_m1.gpkg", package = "ldtr")
+  m2 <- system.file("extdata", "Single_m2_frag.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "B - Fragmentation per se")
   
 })
 
@@ -48,15 +78,27 @@ test_that("tod C aggregation", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m2_frag.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m1.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "C - Aggregation per se")
+  expect_true(outp$ldt_output$ToD_12 == "C - Aggregation per se")
+
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  stda <- system.file("extdata", "single_poly.gpkg", package = "ldtr")
+  m1 <- system.file("extdata", "Single_m2_frag.gpkg", package = "ldtr")
+  m2 <- system.file("extdata", "Single_m1.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "C - Aggregation per se")
   
 })
 
@@ -65,15 +107,26 @@ test_that("tod D gain", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m1.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m1_gain.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "D - Gain")
+  expect_true(outp$ldt_output$ToD_12 == "D - Gain")
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  
+  stda <- system.file("extdata", "single_poly.gpkg", package = "ldtr")
+  m1 <- system.file("extdata", "Single_m1.gpkg", package = "ldtr")
+  m2 <- system.file("extdata", "Single_m1_gain.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "D - Gain")
+
   
 })
 
@@ -82,15 +135,25 @@ test_that("tod E loss", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m1.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m1_loss.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "E - Loss")
+  expect_true(outp$ldt_output$ToD_12 == "E - Loss")
+
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  stda <- system.file("extdata", "single_poly.gpkg", package = "ldtr")
+  m1 <- system.file("extdata", "Single_m1.gpkg", package = "ldtr")
+  m2 <- system.file("extdata", "Single_m1_loss.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "E - Loss")
   
 })
 
@@ -99,15 +162,25 @@ test_that("tod E1 perf", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m1.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m1_perf.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
   
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, T, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=T, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "E1 - Perforation")
+  expect_true(outp$ldt_output$ToD_12 == "E1 - Perforation")
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  
+  stda <- system.file("extdata", "single_poly.gpkg", package = "ldtr")
+  m1 <- system.file("extdata", "Single_m1.gpkg", package = "ldtr")
+  m2 <- system.file("extdata", "Single_m1_perf.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=T, 
+                   forecast=F)
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "E1 - Perforation")
   
 })
 
@@ -116,23 +189,42 @@ test_that("tod F increment and H decrement", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m1.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m1_inc.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
-  
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "F - NP increment by gain")
-  
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  expect_true(outp$ldt_output$ToD_12 == "F - NP increment by gain")
   
   
-  obj <- createLDT(F, 2, stda, c(m2, m1), 0, 0, T, F, F, outp_shp)
+  obj <- createLDT(st_read(stda), list(st_read(m2), st_read(m1)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "H - NP decrement by loss")
+  expect_true(outp$ldt_output$ToD_12 == "H - NP decrement by loss")
   
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  
+  stda <- system.file("extdata", "single_poly.gpkg", package = "ldtr")
+  m1 <- system.file("extdata", "Single_m1.gpkg", package = "ldtr")
+  m2 <- system.file("extdata", "Single_m1_inc.gpkg", package = "ldtr")
+  
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "F - NP increment by gain")
+  
+
+  obj <- createLDT(st_read(stda), list(st_read(m2), st_read(m1)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
+  outp <- writeLDT(obj)
+  
+  expect_true(outp$ldt_output$ToD_12 == "H - NP decrement by loss")
+
   
 })
 
@@ -141,22 +233,21 @@ test_that("tod G aggreg and I frag", {
   stda <- system.file("extdata", "single_poly.shp", package = "ldtr")
   m1 <- system.file("extdata", "Single_m1_inc.shp", package = "ldtr")
   m2 <- system.file("extdata", "Single_m1_agg.shp", package = "ldtr")
-  outp_dir <- system.file("extdata", package = "ldtr")
-  outp_shp <- file.path(outp_dir, 'outExample.shp')
-  
-  obj <- createLDT(F, 2, stda, c(m1, m2), 0, 0, T, F, F, outp_shp)
+
+  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "G - Aggregation by gain")
-  
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
-  
-  
-  obj <- createLDT(F, 2, stda, c(m2, m1), 0, 0, T, F, F, outp_shp)
+  expect_true(outp$ldt_output$ToD_12 == "G - Aggregation by gain")
+
+
+  obj <- createLDT(st_read(stda), list(st_read(m2), st_read(m1)), patches=0, squares=0, 
+                   analysis_squares=F, spatialshift=T, perforation=F, 
+                   forecast=F)
   outp <- writeLDT(obj)
   
-  expect_true(outp$ToD_12 == "I - Fragmentation by loss")
-  
-  file.remove(list.files(outp_dir, pattern = 'outExample', full.names = T, recursive = F))
+  expect_true(outp$ldt_output$ToD_12 == "I - Fragmentation by loss")
+
   
 })

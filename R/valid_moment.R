@@ -16,7 +16,14 @@ valid_moment <- function(mm, index){
     "MULTIPOLYGON"
   )
   
-  if(is.na(st_crs(mm))){
+  crs <- sf::st_crs(mm)
+  
+  invalid_crs <-
+    is.na(crs) ||
+    is.na(crs$wkt) ||
+    grepl("Undefined", crs$Name)
+  
+  if(invalid_crs){
     stop(paste0("CRS of moment", index, " not defined, please check your data.\n"), call. = T)
   }
 

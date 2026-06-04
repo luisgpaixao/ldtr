@@ -55,10 +55,6 @@
 #' }
 writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, outfolder = NULL){
 
-  if(!is.null(objLDT@output) && file.exists(objLDT@output)){
-    stop("Output file already exists, please check your data.\n", call. = T)
-  }
-
   if(!dir.exists(objLDT@temp_fold)){
     dir.create(objLDT@temp_fold)
   }
@@ -170,11 +166,21 @@ writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, out
       cat("No layername was set! Using default name!\n")
       
       out_lyr = file.path(outfolder, "results.gpkg")
-      st_write(out_shp, out_lyr)
+      if(file.exists(out_lyr)){
+        cat("Output file already exists. Optionally save sf objects with st_write() function!\n")
+      }else{
+        st_write(out_shp, out_lyr)
+      }
+      
       
     }else{
       out_lyr = file.path(outfolder, paste0(layername, ".gpkg"))
-      st_write(out_shp, out_lyr)
+      
+      if(file.exists(out_lyr)){
+        cat("Output file already exists. Optionally save sf objects with st_write() function!\n")
+      }else{
+        st_write(out_shp, out_lyr)
+      }
     }
   }
   

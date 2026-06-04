@@ -12,8 +12,7 @@ createLDT(
   analysis_squares = T,
   spatialshift = F,
   perforation = F,
-  forecast = F,
-  output = NULL
+  forecast = F
 )
 }
 \arguments{
@@ -32,8 +31,6 @@ createLDT(
 \item{perforation}{a logical value representing if perforation is to be consider. Default to \code{FALSE}.}
 
 \item{forecast}{a logical value representing if forecast is to be consider. Default to \code{FALSE}.}
-
-\item{output}{a character value representing the path for the output. Can be a GeoPackage, ESRI Shapefile or another format supported by sf package. Default to NULL.}
 }
 \value{
 an LDT object.
