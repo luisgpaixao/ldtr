@@ -8,13 +8,26 @@
 #' @return a sf Simple polygon feature collection representing the moment.
 #' @export
 valid_moment <- function(mm, index){
+
+  geom_type <- unique(as.character(sf::st_geometry_type(mm)))
+  
+  valid_types <- c(
+    "POLYGON",
+    "MULTIPOLYGON"
+  )
   
   if(is.na(st_crs(mm))){
     stop(paste0("CRS of moment", index, " not defined, please check your data.\n"), call. = T)
   }
 
-  if(! all(st_layers(mm_path)$geomtype %in% c("Polygon", "3D Polygon"))){
-    stop(paste0("Moment", index, " geometry type is not Polygon, please check your data.\n"), call. = T)
+  if (!all(geom_type %in% valid_types)) {
+    stop(
+      paste0(
+        "Moment ", index,
+        " geometry type must be POLYGON or MULTIPOLYGON."
+      ),
+      call. = TRUE
+    )
   }
   
   return(mm)

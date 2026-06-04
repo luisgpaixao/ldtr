@@ -10,35 +10,46 @@
 #' @param spatialshift a logical value representing if spatial shift is to be consider. Default to `FALSE`.
 #' @param perforation a logical value representing if perforation is to be consider. Default to `FALSE`.
 #' @param forecast a logical value representing if forecast is to be consider. Default to `FALSE`.
-#' @param output a character value representing the path for the output. Can be a GeoPackage, ESRI Shapefile or another format supported by sf package. Default to NULL.
 #'
 #' @return an LDT object.
 #' @export
 #'
 #' @examples
 #' \donttest{
+#' library(sf)
 #' 
-#' If using GeoPackage with multiple layers, read sf object with layer argument:
+#' path_gpkg <- system.file(
+#'   "extdata",
+#'   "example_ldt.gpkg",
+#'   package = "ldtr"
+#' )
+#'
+#' std_area <- st_read(
+#'   path_gpkg,
+#'   layer = "study_area",
+#'   quiet = TRUE
+#' )
+#'
+#' list_moments <- list(
+#'   st_read(path_gpkg, layer = "moment1", quiet = TRUE),
+#'   st_read(path_gpkg, layer = "moment2", quiet = TRUE)
+#' )
 #' 
-#' path_gpkg = "/path_to_wd/target.gpkg"
 #' 
-#' std_area = st_read(path_gpkg, layer = "study_area")
+#' # Create a 2 moments 10000 meters square size Land dynamics object, 
+#' considering patches over 1000 square meters, 
+#' spatial shift, perforation and forecast
 #' 
-#' list_moments = list(st_read(path_gpkg, layer = "moment1"), st_read(path_gpkg, layer = "moment2"))
-#' 
-#' or if using ESRI Shapefiles:
-#' 
-#' std_area = st_read("/path_to_wd/studyarea.shp")
-#' 
-#' list_moments = list(st_read("/path_to_wd/moment1.shp"), st_read("/path_to_wd/moment2.shp"))
-#' 
-#' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
-#' objLDT <- createLDT(std_area, list_moments, patches=1000, squares=30000, analysis_squares=T, spatialshift=T, perforation=T, 
-#' forecast=T, output="/path_to_output/outLDT.gpkg")
+#' objLDT <- createLDT(std_area, 
+#'                     list_moments, 
+#'                     patches=1000,
+#'                     spatialshift=T, 
+#'                     perforation=T, 
+#'                     forecast=T)
 #' }
 createLDT <- function(studyarea, moments, patches=5000, squares=10000, 
                       analysis_squares=T, spatialshift=F, perforation=F, 
-                      forecast=F, output=NULL) {
+                      forecast=F) {
 
 
   default_clusterarea = 50000
@@ -52,12 +63,6 @@ createLDT <- function(studyarea, moments, patches=5000, squares=10000,
     stop("Number of moments is less than 2. Please check Ldt object variables.\n", call. = T)
   }
   
-  temp_fold = if(is.null(output)) {
-    tempdir()
-  } else {
-    file.path(dirname(output), "temp")
-  }
-  
   new("Ldt",
       analysis_squares = analysis_squares,
       nmoments = length(moments),
@@ -68,8 +73,7 @@ createLDT <- function(studyarea, moments, patches=5000, squares=10000,
       spatialshift = spatialshift,
       perforation = perforation,
       forecast = forecast,
-      output = output,
-      temp_fold = temp_fold,
+      temp_fold = tempdir(),
       cluster_area = default_clusterarea,
       gap_area = ifelse(analysis_squares, gap_area, 1)
   )

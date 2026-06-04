@@ -12,7 +12,7 @@ valid_studyarea <- function(sta){
     stop("Empty study area, please check your data.\n", call. = T)
   }
   
-  sta = sta[,"geometry"]
+  sta = st_as_sf(st_geometry(sta))
   if((is.na(st_crs(sta)$units)) || (is.null(st_crs(sta)$units)) || (st_crs(sta)$units != "m")){
     stop("CRS units of study area's Shapefile are not in meters, please check your data.\n", call. = T)
   }

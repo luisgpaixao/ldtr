@@ -3,8 +3,10 @@
 #' Performs the Landscape Dynamics process and returns a sf Simple polygon feature collection and a list of ggplot maps.
 #'
 #' @param objLDT an object of class `LDT`.
+#' @param saveoutput a logical value representing if output layer should be exported. Default to `FALSE`.
 #' @param savemaps a logical value representing if output maps should be exported. Default to `FALSE`.
-#' @param outfolder a character value representing the path for output folder. Used only when `savemaps = TRUE`
+#' @param layername a character value representing the layer basename. Used only if `saveoutput = TRUE` or `savemaps = TRUE`.
+#' @param outfolder a character value representing the path for output folder. Used only if `saveoutput = TRUE` or `savemaps = TRUE`.
 #'
 #' @return a list with 2 elements: a sf Simple polygon feature collection representing the Land Dynamics output, and a list of ggplot objects, representing all Land Dynamics output layout maps.
 #'
@@ -17,17 +19,43 @@
 #'
 #' @examples
 #' \donttest{
+#' library(sf)
+#' 
+#' path_gpkg <- system.file(
+#'   "extdata",
+#'   "example_ldt.gpkg",
+#'   package = "ldtr"
+#' )
 #'
-#' # create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
-#' objLDT <- createLDT("/path_to_wd/studyarea.shp", c("/path_to_wd/moment1.shp", "/path_to_wd/moment2.shp"), patches=1000, squares=30000, analysis_squares=T, spatialshift=T, perforation=T, 
-#' forecast=T, output="/path_to_output/outLDT.shp")
+#' std_area <- st_read(
+#'   path_gpkg,
+#'   layer = "study_area",
+#'   quiet = TRUE
+#' )
+#'
+#' list_moments <- list(
+#'   st_read(path_gpkg, layer = "moment1", quiet = TRUE),
+#'   st_read(path_gpkg, layer = "moment2", quiet = TRUE)
+#' )
+#' 
+#' 
+#' # Create a 2 moments 10000 meters square size Land dynamics object, 
+#' considering patches over 1000 square meters, 
+#' spatial shift, perforation and forecast
+#' 
+#' objLDT <- createLDT(std_area, 
+#'                     list_moments, 
+#'                     patches=1000,
+#'                     spatialshift=T, 
+#'                     perforation=T, 
+#'                     forecast=T)
 #' 
 #' # run LDT
 #' writeLDT(objLDT)
 #' }
-writeLDT <- function(objLDT, savemaps = F, outfolder = NULL){
+writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, outfolder = NULL){
 
-  if(file.exists(objLDT@output)){
+  if(!is.null(objLDT@output) && file.exists(objLDT@output)){
     stop("Output file already exists, please check your data.\n", call. = T)
   }
 
@@ -36,10 +64,10 @@ writeLDT <- function(objLDT, savemaps = F, outfolder = NULL){
   }
 
   # study area
-  sta = valid_studyarea(objLDT@studyareapath)
+  sta = valid_studyarea(objLDT@studyarea)
 
   # moments
-  mmt = create_moments(objLDT@momentspaths, sta)
+  mmt = create_moments(objLDT@moments, sta)
 
   # squares or districts
   if(objLDT@analysis_squares){
@@ -109,6 +137,13 @@ writeLDT <- function(objLDT, savemaps = F, outfolder = NULL){
     aux_sta = update_sta_ToD(aux_sta, objLDT@nmoments, objLDT@spatialshift, objLDT@perforation, objLDT@forecast)
 
     out_v_file = file.path(objLDT@temp_fold, paste0("v", seqs, ".gpkg"))
+
+    if ("FID" %in% names(aux_sta)) {
+      aux_sta$FID = NULL
+    }
+    
+    aux_sta = sf::st_zm(aux_sta, drop = TRUE)
+    
     st_write(aux_sta, out_v_file)
     vec_shp = c(vec_shp, out_v_file)
 
@@ -126,18 +161,43 @@ writeLDT <- function(objLDT, savemaps = F, outfolder = NULL){
 
   layouts = create_layouts(objLDT@nmoments, out_shp)
   
+  if(saveoutput){
+    
+    if(is.null(outfolder)){
+      cat("No output folder was set! Optionally save sf objects with st_write() function!\n")
+      
+    }else if(is.null(layername)){
+      cat("No layername was set! Using default name!\n")
+      
+      out_lyr = file.path(outfolder, "results.gpkg")
+      st_write(out_shp, out_lyr)
+      
+    }else{
+      out_lyr = file.path(outfolder, paste0(layername, ".gpkg"))
+      st_write(out_shp, out_lyr)
+    }
+  }
+  
   if(savemaps){
     
     if(is.null(outfolder)){
-      cat("No output folder was set! Optionally save ggplot objects with ggplot2 functions!\n")
+      cat("No output folder was set! Optionally save ggplot objects with ggsave() function!\n")
       
+    }else if(is.null(layername)){
+      cat("No layername was set! Using default names!\n")
+      
+      for(i in 1:length(layouts)){
+        out_png = file.path(outfolder, paste0(names(layouts[i]), ".png"))
+        ggsave(out_png, plot = layouts[i], width = 15, height = 10, units = "cm")
+      }
+    
     }else{
         for(i in 1:length(layouts)){
-          out_png = file.path(outfolder, paste0(names(layouts[i]), ".png"))
+          out_png = file.path(outfolder, paste0(layername, '_', names(layouts[i]), ".png"))
           ggsave(out_png, plot = layouts[i], width = 15, height = 10, units = "cm")
         }
       }
-    }
+  }
 
   return(list(ldt_output = out_shp, layouts = layouts))
 }

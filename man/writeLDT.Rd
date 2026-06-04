@@ -4,10 +4,18 @@
 \alias{writeLDT}
 \title{Write LDT output}
 \usage{
-writeLDT(objLDT, savemaps = F, outfolder = NULL)
+writeLDT(
+  objLDT,
+  saveoutput = F,
+  savemaps = F,
+  layername = NULL,
+  outfolder = NULL
+)
 }
 \arguments{
 \item{objLDT}{an object of class \code{LDT}.}
+
+\item{saveoutput}{a logical value representing if output layer should be exported. Default to \code{FALSE}. If \code{TRUE}}
 
 \item{savemaps}{a logical value representing if output maps should be exported. Default to \code{FALSE}.}
 
@@ -21,10 +29,36 @@ Performs the Landscape Dynamics process and returns a sf Simple polygon feature 
 }
 \examples{
 \donttest{
+library(sf)
 
-# create a 2 moments 30000 meters square size Land dynamics object, considering patches over 1000 square meters, spatial shift, perforation and forecast
-objLDT <- createLDT("/path_to_wd/studyarea.shp", c("/path_to_wd/moment1.shp", "/path_to_wd/moment2.shp"), patches=1000, squares=30000, analysis_squares=T, spatialshift=T, perforation=T, 
-forecast=T, output="/path_to_output/outLDT.shp")
+path_gpkg <- system.file(
+  "extdata",
+  "example_ldt.gpkg",
+  package = "ldtr"
+)
+
+std_area <- st_read(
+  path_gpkg,
+  layer = "study_area",
+  quiet = TRUE
+)
+
+list_moments <- list(
+  st_read(path_gpkg, layer = "moment1", quiet = TRUE),
+  st_read(path_gpkg, layer = "moment2", quiet = TRUE)
+)
+
+
+# Create a 2 moments 10000 meters square size Land dynamics object, 
+considering patches over 1000 square meters, 
+spatial shift, perforation and forecast
+
+objLDT <- createLDT(std_area, 
+                    list_moments, 
+                    patches=1000,
+                    spatialshift=T, 
+                    perforation=T, 
+                    forecast=T)
 
 # run LDT
 writeLDT(objLDT)

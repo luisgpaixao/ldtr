@@ -8,9 +8,16 @@
 #' @export
 multi_to_single <- function(in_layer){
 
-  single = in_layer %>% filter("POLYGON" == st_geometry_type(geometry))
-
-  multi = in_layer %>% filter("MULTIPOLYGON" == st_geometry_type(geometry))
+  single = in_layer %>%
+    dplyr::filter(
+      sf::st_geometry_type(.) == "POLYGON"
+    )
+  
+  multi = in_layer %>%
+    dplyr::filter(
+      sf::st_geometry_type(.) == "MULTIPOLYGON"
+    )
+  
   multi = suppressWarnings(st_cast(multi, "POLYGON"))
 
   return(suppressWarnings(rbind(single, multi)))
