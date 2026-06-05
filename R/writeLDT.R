@@ -47,17 +47,18 @@
 #'                     list_moments, 
 #'                     patches=1000,
 #'                     squares=5000,
-#'                     spatialshift=T, 
-#'                     perforation=T, 
-#'                     forecast=T)
+#'                     spatialshift=TRUE, 
+#'                     perforation=TRUE, 
+#'                     forecast=TRUE)
 #' 
 #' # run LDT
 #' writeLDT(objLDT)
 #' }
-writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, outfolder = NULL){
+writeLDT <- function(objLDT, saveoutput = FALSE, savemaps = FALSE, 
+                     layername = NULL, outfolder = NULL){
 
   if(!dir.exists(objLDT@temp_fold)){
-    dir.create(objLDT@temp_fold)
+    dir.create(objLDT@temp_fold, recursive = TRUE, showWarnings = FALSE)
   }
 
   # study area
@@ -141,20 +142,37 @@ writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, out
     
     aux_sta = sf::st_zm(aux_sta, drop = TRUE)
     
-    st_write(aux_sta, out_v_file)
+    
+    dir.create(dirname(out_v_file),
+               recursive = TRUE,
+               showWarnings = FALSE)
+    
+    st_write(
+      aux_sta,
+      out_v_file,
+      delete_dsn = TRUE,
+      quiet = TRUE
+    )
     vec_shp = c(vec_shp, out_v_file)
+    
+    
 
   }
 
-  shp_list = list()
-  for(i in vec_shp){
-    shp_list[[length(shp_list)+1]] = st_read(i)
-  }
+  # shp_list = list()
+  
+  shp_list = lapply(
+    vec_shp,
+    st_read,
+    quiet = TRUE
+  )
+  
+  # for(i in vec_shp){
+  #   shp_list[[length(shp_list)+1]] = st_read(i)
+  # }
 
   out_shp = do.call("rbind", shp_list)
-
-  # st_write(out_shp, objLDT@output)
-  unlink(objLDT@temp_fold, recursive = T)
+  
 
   layouts = create_layouts(objLDT@nmoments, out_shp)
   
@@ -170,7 +188,16 @@ writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, out
       if(file.exists(out_lyr)){
         cat("Output file already exists. Optionally save sf objects with st_write() function!\n")
       }else{
-        st_write(out_shp, out_lyr)
+        dir.create(dirname(out_lyr),
+                   recursive = TRUE,
+                   showWarnings = FALSE)
+        
+        st_write(
+          out_shp,
+          out_lyr,
+          delete_dsn = TRUE,
+          quiet = TRUE
+        )
       }
       
       
@@ -180,7 +207,16 @@ writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, out
       if(file.exists(out_lyr)){
         cat("Output file already exists. Optionally save sf objects with st_write() function!\n")
       }else{
-        st_write(out_shp, out_lyr)
+        dir.create(dirname(out_lyr),
+                   recursive = TRUE,
+                   showWarnings = FALSE)
+        
+        st_write(
+          out_shp,
+          out_lyr,
+          delete_dsn = TRUE,
+          quiet = TRUE
+        )
       }
     }
   }
@@ -195,16 +231,28 @@ writeLDT <- function(objLDT, saveoutput = F, savemaps = F, layername = NULL, out
       
       for(i in 1:length(layouts)){
         out_png = file.path(outfolder, paste0(names(layouts[i]), ".png"))
+        
+        dir.create(dirname(out_png),
+                   recursive = TRUE,
+                   showWarnings = FALSE)
+        
         ggsave(out_png, plot = layouts[i], width = 15, height = 10, units = "cm")
       }
     
     }else{
         for(i in 1:length(layouts)){
           out_png = file.path(outfolder, paste0(layername, '_', names(layouts[i]), ".png"))
+          
+          dir.create(dirname(out_png),
+                     recursive = TRUE,
+                     showWarnings = FALSE)
+          
           ggsave(out_png, plot = layouts[i], width = 15, height = 10, units = "cm")
         }
       }
   }
 
+  unlink(objLDT@temp_fold, recursive = T)
+  
   return(list(ldt_output = out_shp, layouts = layouts))
 }

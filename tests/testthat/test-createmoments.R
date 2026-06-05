@@ -6,10 +6,10 @@ test_that("write LDT", {
 
   outp_shp <- tempfile(fileext = ".gpkg")
 
-  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=3000, squares=3000, 
-            analysis_squares=T, spatialshift=T, perforation=F, 
-            forecast=F)
-  outp <- writeLDT(obj, saveoutput = T, layername = tools::file_path_sans_ext(basename(outp_shp)), 
+  obj <- createLDT(st_read(stda, quiet = TRUE), list(st_read(m1, quiet = TRUE), st_read(m2, quiet = TRUE)),
+                   patches=3000, squares=3000, analysis_squares=TRUE, spatialshift=TRUE, 
+                   perforation=FALSE,forecast=FALSE)
+  outp <- writeLDT(obj, saveoutput = TRUE, layername = tools::file_path_sans_ext(basename(outp_shp)), 
                    outfolder = dirname(outp_shp))
 
   expect_s3_class(
@@ -24,10 +24,10 @@ test_that("write LDT", {
 
   outp_shp <- tempfile(fileext = ".gpkg")
   
-  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=3000, squares=3000, 
-                   analysis_squares=T, spatialshift=T, perforation=F, 
-                   forecast=F)
-  outp <- writeLDT(obj, saveoutput = T, layername = tools::file_path_sans_ext(basename(outp_shp)), 
+  obj <- createLDT(st_read(stda, quiet = TRUE), list(st_read(m1, quiet = TRUE), st_read(m2, quiet = TRUE)),
+                   patches=3000, squares=3000, analysis_squares=TRUE, spatialshift=TRUE, 
+                   perforation=FALSE,forecast=FALSE)
+  outp <- writeLDT(obj, saveoutput = TRUE, layername = tools::file_path_sans_ext(basename(outp_shp)), 
                    outfolder = dirname(outp_shp))
   
   expect_s3_class(
@@ -63,11 +63,11 @@ test_that("check all empty moments", {
   
   outp_shp <- tempfile(fileext = ".gpkg")
 
-  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=3000, squares=3000, 
-                   analysis_squares=T, spatialshift=T, perforation=F, 
-                   forecast=F)
+  obj <- createLDT(st_read(stda, quiet = TRUE), list(st_read(m1, quiet = TRUE), st_read(m2, quiet = TRUE)),
+                   patches=3000, squares=3000, analysis_squares=TRUE, spatialshift=TRUE, 
+                   perforation=FALSE,forecast=FALSE)
   
-  outp <- writeLDT(obj, saveoutput = T, layername = tools::file_path_sans_ext(basename(outp_shp)), 
+  outp <- writeLDT(obj, saveoutput = TRUE, layername = tools::file_path_sans_ext(basename(outp_shp)), 
                    outfolder = dirname(outp_shp))
   
   expect_s3_class(
@@ -84,11 +84,11 @@ test_that("check all empty moments", {
   out_layername <- 'outExample'
   outp_shp <- file.path(outp_dir, paste0(out_layername, '.gpkg'))
   
-  obj <- createLDT(st_read(stda), list(st_read(m1), st_read(m2)), patches=3000, squares=3000, 
-                   analysis_squares=T, spatialshift=T, perforation=F, 
-                   forecast=F)
+  obj <- createLDT(st_read(stda, quiet = TRUE), list(st_read(m1, quiet = TRUE), st_read(m2, quiet = TRUE)),
+                   patches=3000, squares=3000, analysis_squares=TRUE, spatialshift=TRUE, 
+                   perforation=FALSE,forecast=FALSE)
   
-  outp <- writeLDT(obj, saveoutput = T, layername = tools::file_path_sans_ext(basename(outp_shp)), 
+  outp <- writeLDT(obj, saveoutput = TRUE, layername = tools::file_path_sans_ext(basename(outp_shp)), 
                    outfolder = dirname(outp_shp))
   
   expect_s3_class(

@@ -44,13 +44,13 @@
 #'                     list_moments, 
 #'                     patches=1000,
 #'                     squares=5000,
-#'                     spatialshift=T, 
-#'                     perforation=T, 
-#'                     forecast=T)
+#'                     spatialshift=TRUE, 
+#'                     perforation=TRUE, 
+#'                     forecast=TRUE)
 #' }
 createLDT <- function(studyarea, moments, patches=5000, squares=10000, 
-                      analysis_squares=T, spatialshift=F, perforation=F, 
-                      forecast=F) {
+                      analysis_squares=TRUE, spatialshift=FALSE, perforation=FALSE, 
+                      forecast=FALSE) {
 
 
   default_clusterarea = 50000
@@ -74,7 +74,11 @@ createLDT <- function(studyarea, moments, patches=5000, squares=10000,
       spatialshift = spatialshift,
       perforation = perforation,
       forecast = forecast,
-      temp_fold = tempdir(),
+      temp_fold = {
+        x = tempfile(pattern = "ldtr_")
+        dir.create(x)
+        x
+      },
       cluster_area = default_clusterarea,
       gap_area = ifelse(analysis_squares, gap_area, 1)
   )

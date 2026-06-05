@@ -6,8 +6,8 @@
 \usage{
 writeLDT(
   objLDT,
-  saveoutput = F,
-  savemaps = F,
+  saveoutput = FALSE,
+  savemaps = FALSE,
   layername = NULL,
   outfolder = NULL
 )
@@ -59,9 +59,9 @@ objLDT <- createLDT(std_area,
                     list_moments, 
                     patches=1000,
                     squares=5000,
-                    spatialshift=T, 
-                    perforation=T, 
-                    forecast=T)
+                    spatialshift=TRUE, 
+                    perforation=TRUE, 
+                    forecast=TRUE)
 
 # run LDT
 writeLDT(objLDT)

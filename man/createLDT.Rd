@@ -9,10 +9,10 @@ createLDT(
   moments,
   patches = 5000,
   squares = 10000,
-  analysis_squares = T,
-  spatialshift = F,
-  perforation = F,
-  forecast = F
+  analysis_squares = TRUE,
+  spatialshift = FALSE,
+  perforation = FALSE,
+  forecast = FALSE
 )
 }
 \arguments{
@@ -68,8 +68,8 @@ objLDT <- createLDT(std_area,
                     list_moments, 
                     patches=1000,
                     squares=5000,
-                    spatialshift=T, 
-                    perforation=T, 
-                    forecast=T)
+                    spatialshift=TRUE, 
+                    perforation=TRUE, 
+                    forecast=TRUE)
 }
 }
