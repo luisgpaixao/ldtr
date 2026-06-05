@@ -13,7 +13,8 @@
 #'
 #' @return an LDT object.
 #' @export
-#'
+#' @importFrom methods new
+#' 
 #' @examples
 #' \donttest{
 #' library(sf)
