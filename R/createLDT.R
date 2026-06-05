@@ -37,8 +37,8 @@
 #' 
 #' 
 #' # Create a 2 moments 5000 meters square size Land dynamics object, 
-#' considering patches over 1000 square meters, 
-#' spatial shift, perforation and forecast
+#' # considering patches over 1000 square meters, 
+#' # spatial shift, perforation and forecast
 #' 
 #' objLDT <- createLDT(std_area, 
 #'                     list_moments, 

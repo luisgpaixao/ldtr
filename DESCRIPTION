@@ -23,9 +23,10 @@ Imports:
 	dplyr,
 	ggplot2,
 	ggspatial,
-	roxygen2
+	methods
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Suggests: 
+    roxygen2,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

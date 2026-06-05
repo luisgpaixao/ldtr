@@ -40,8 +40,8 @@
 #' 
 #' 
 #' # Create a 2 moments 5000 meters square size Land dynamics object, 
-#' considering patches over 1000 square meters, 
-#' spatial shift, perforation and forecast
+#' # considering patches over 1000 square meters, 
+#' # spatial shift, perforation and forecast
 #' 
 #' objLDT <- createLDT(std_area, 
 #'                     list_moments, 
@@ -158,18 +158,12 @@ writeLDT <- function(objLDT, saveoutput = FALSE, savemaps = FALSE,
     
 
   }
-
-  # shp_list = list()
   
   shp_list = lapply(
     vec_shp,
     st_read,
     quiet = TRUE
   )
-  
-  # for(i in vec_shp){
-  #   shp_list[[length(shp_list)+1]] = st_read(i)
-  # }
 
   out_shp = do.call("rbind", shp_list)
   
