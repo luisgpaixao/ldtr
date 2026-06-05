@@ -77,10 +77,6 @@ create_layouts <- function(nmoments, in_layer){
 
     #ggsave(out_png, plot = p, width = 15, height = 10, units = "cm")
     list_png[[tod_field]] = p
-    
-    if(pairs[[i]][1] == 1 & pairs[[i]][2] == nmoments){
-      plot(p)
-    }
 
   }
 
