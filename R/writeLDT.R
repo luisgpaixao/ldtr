@@ -19,6 +19,7 @@
 #'
 #' @examples
 #' \donttest{
+#' library(ldtr)
 #' library(sf)
 #' 
 #' path_gpkg <- system.file(

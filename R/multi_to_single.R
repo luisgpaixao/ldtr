@@ -7,18 +7,22 @@
 #' @return an sf Simple feature collection.
 #' @export
 multi_to_single <- function(in_layer){
-
-  single = in_layer %>%
-    dplyr::filter(
-      sf::st_geometry_type(.) == "POLYGON"
-    )
   
-  multi = in_layer %>%
-    dplyr::filter(
-      sf::st_geometry_type(.) == "MULTIPOLYGON"
-    )
+  geom_types <- as.character(
+    sf::st_geometry_type(in_layer)
+  )
   
-  multi = suppressWarnings(st_cast(multi, "POLYGON"))
-
-  return(suppressWarnings(rbind(single, multi)))
+  single <- in_layer[
+    geom_types == "POLYGON",
+  ]
+  
+  multi <- in_layer[
+    geom_types == "MULTIPOLYGON",
+  ]
+  
+  multi <- suppressWarnings(
+    sf::st_cast(multi, "POLYGON")
+  )
+  
+  suppressWarnings(rbind(single, multi))
 }
