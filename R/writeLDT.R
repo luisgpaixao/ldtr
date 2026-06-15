@@ -5,7 +5,7 @@
 #' @param objLDT an object of class `LDT`.
 #' @param saveoutput a logical value representing if output layer should be exported. Default to `FALSE`.
 #' @param savemaps a logical value representing if output maps should be exported. Default to `FALSE`.
-#' @param layername a character value representing the layer basename. Used only if `saveoutput = TRUE` or `savemaps = TRUE`.
+#' @param layername a character value representing the layer base name. Used only if `saveoutput = TRUE` or `savemaps = TRUE`.
 #' @param outfolder a character value representing the path for output folder. Used only if `saveoutput = TRUE` or `savemaps = TRUE`.
 #'
 #' @return a list with 2 elements: a sf Simple polygon feature collection representing the Land Dynamics output, and a list of ggplot objects, representing all Land Dynamics output layout maps.

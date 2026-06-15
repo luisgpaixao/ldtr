@@ -19,7 +19,7 @@ writeLDT(
 
 \item{savemaps}{a logical value representing if output maps should be exported. Default to \code{FALSE}.}
 
-\item{layername}{a character value representing the layer basename. Used only if \code{saveoutput = TRUE} or \code{savemaps = TRUE}.}
+\item{layername}{a character value representing the layer base name. Used only if \code{saveoutput = TRUE} or \code{savemaps = TRUE}.}
 
 \item{outfolder}{a character value representing the path for output folder. Used only if \code{saveoutput = TRUE} or \code{savemaps = TRUE}.}
 }
@@ -31,6 +31,7 @@ Performs the Landscape Dynamics process and returns a sf Simple polygon feature 
 }
 \examples{
 \donttest{
+library(ldtr)
 library(sf)
 
 path_gpkg <- system.file(

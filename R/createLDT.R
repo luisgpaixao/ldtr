@@ -7,9 +7,9 @@
 #' @param patches an integer value representing minimum area threshold of features, in square meters. Default to 5000.
 #' @param squares an integer value representing square side dimension, in meters. Only used if type of analysis if set to squares. Default to 10000.
 #' @param analysis_squares a logical value representing the type of analysis. If `TRUE`, the analysis is done by a regular grid of squares. If `FALSE`, the analysis is done by districts. Default to `TRUE`.
-#' @param spatialshift a logical value representing if spatial shift is to be consider. Default to `FALSE`.
-#' @param perforation a logical value representing if perforation is to be consider. Default to `FALSE`.
-#' @param forecast a logical value representing if forecast is to be consider. Default to `FALSE`.
+#' @param spatialshift a logical value representing if spatial shift is to be considered. Default to `FALSE`.
+#' @param perforation a logical value representing if perforation is to be considered. Default to `FALSE`.
+#' @param forecast a logical value representing if forecast is to be considered. Default to `FALSE`.
 #'
 #' @return an LDT object.
 #' @export

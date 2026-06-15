@@ -26,11 +26,11 @@ createLDT(
 
 \item{analysis_squares}{a logical value representing the type of analysis. If \code{TRUE}, the analysis is done by a regular grid of squares. If \code{FALSE}, the analysis is done by districts. Default to \code{TRUE}.}
 
-\item{spatialshift}{a logical value representing if spatial shift is to be consider. Default to \code{FALSE}.}
+\item{spatialshift}{a logical value representing if spatial shift is to be considered. Default to \code{FALSE}.}
 
-\item{perforation}{a logical value representing if perforation is to be consider. Default to \code{FALSE}.}
+\item{perforation}{a logical value representing if perforation is to be considered. Default to \code{FALSE}.}
 
-\item{forecast}{a logical value representing if forecast is to be consider. Default to \code{FALSE}.}
+\item{forecast}{a logical value representing if forecast is to be considered. Default to \code{FALSE}.}
 }
 \value{
 an LDT object.
@@ -40,6 +40,7 @@ Constructor for LDT objects.
 }
 \examples{
 \donttest{
+library(ldtr)
 library(sf)
 
 path_gpkg <- system.file(
